@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<style>
+    .bgcolor{
+        background-color: #272b30;
+    }
+    .prm{
+        background-color: #272b30!important;
+        border: 0!important;
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+</style>
+<link rel="stylesheet" href="/css/bootscss.css">
+<body class="container text-center bgcolor">
+
+<div>
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:basicInfo();">基础信息 <span class="sr-only">(current)</span></a></li>
+
+                    <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">化验单 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="javascript:tableOptional(0)">孕期甲功</a></li>
+                            <li><a href="javascript:tableOptional(1)">孕期血常规</a></li>
+                            <li><a href="javascript:tableOptional(2)">孕期大生化</a></li>
+                            <li><a href="javascript:tableOptional(3)">孕期尿常规</a></li>
+                            <li><a href="javascript:tableOptional(4)">孕期凝血常规</a></li>
+                            <li><a href="javascript:tableOptional(5)">孕期铁蛋白检测</a></li>
+                            <li><a href="javascript:tableOptional(6)">孕期病毒八项检查</a></li>
+                            <li><a href="javascript:tableOptional(7)">C反应蛋白</a></li>
+                            <li><a href="javascript:tableOptional(8)">B超</a></li>
+                            <li><a href="javascript:tableOptional(9)">其他</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>-->
+                    <li><a href="javascript:taskList();">任务列表</a></li>
+                    <li><a href="#" target="_blank">查询</a></li>
+                    <li><a href="#">删除</a></li>
+                </ul>
+              <!--  <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>-->
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>-->
+
+
+
+<div id="context" >
+    <form id="form">
+        <input name="index" type="hidden" value="">
+    </form>
+</div>
+
+<!--<div class="well">
+
+</div>-->
+
+</body>
+<script src="/js/jquery-3.2.1.js">
+</script>
+<script src="/js/bootstrap.js"></script>
+<script>
+    $(
+        function () {
+
+           getForm();
+
+            $("#btn").click(
+                    submitForm
+            );
+
+        }
+    );
+    function basicInfo() {
+        window.location.href="/loadTask.form";
+    }
+    function taskList(){
+        $.post("/taskList.form",{},function(val){
+            $("#context").html(val);
+        })
+    }
+    function submitForm() {
+        var data = $("#context").children("#form").serializeArray();
+        $.post("/save.form",data,function(val) {
+            console.log(val);
+            if (val == "finished"){
+                $.post("/view.form?path=optional",{},function(data,status){
+                    $("#context").html(data)
+                });
+            }
+            var index = $("input[name='index']");
+            $(index).val(Number($(index).val())+1);
+            console.log($(index).val());
+            getForm();
+        });
+    }
+    function getForm(){
+        var val = $("#context").children("#form").serializeArray();
+        $.post("/checkBox.form",val,function(data,status){
+            $("#context").html(data)
+        });
+    }
+
+    function tableOptional(index){
+        var basic_id = $("input[name='basic_id']").val();
+        $.post("/checkBox.form",{"basic_id":basic_id,"index":index,"table_type":"optional"},function(data,status){
+            $("#context").html(data)
+        });
+    }
+</script>
+</html>

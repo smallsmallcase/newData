@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.VisusEightCheck">
+    <insert id="saveVisusEightCheck" useGeneratedKeys="true" keyProperty="vec_id" parameterType="com.njupt.po.VisusEightCheck">
+        insert into VisusEightCheck(
+                basic_id,
+                iu,
+                miu,
+                eiu,
+                emiu,
+                emiu_in,
+                hiv,
+                b_kangti,
+                meidu,
+                v_time
+                        
+        ) values(
+              #{basic_id},
+              #{iu},
+              #{miu},
+              #{eiu},
+              #{emiu},
+              #{emiu_in},
+              #{hiv},
+              #{b_kangti},
+              #{meidu},
+              #{v_time}
+              )
+    </insert>
+
+<select id="queryVisusEightCheck" parameterType="com.njupt.po.VisusEightCheck" resultType="com.njupt.po.VisusEightCheck">
+        SELECT basic_id,
+                iu,
+                miu,
+                eiu,
+                emiu,
+                emiu_in,
+                hiv,
+                b_kangti,
+                meidu,
+                v_time
+                ,vec_id
+        from VisusEightCheck
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="iu != null">
+                and iu = #{iu}
+            </if>
+            <if test="miu != null">
+                and miu = #{miu}
+            </if>
+            <if test="eiu != null">
+                and eiu = #{eiu}
+            </if>
+            <if test="emiu != null">
+                and emiu = #{emiu}
+            </if>
+            <if test="emiu_in != null">
+                and emiu_in = #{emiu_in}
+            </if>
+            <if test="hiv != null">
+                and hiv = #{hiv}
+            </if>
+            <if test="b_kangti != null">
+                and b_kangti = #{b_kangti}
+            </if>
+            <if test="meidu != null">
+                and meidu = #{meidu}
+            </if>
+            <if test="v_time != null">
+                and v_time = #{v_time}
+            </if>
+            <if test="vec_id != null">
+                and vec_id = #{vec_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateVisusEightCheck" parameterType="com.njupt.po.VisusEightCheck">
+        UPDATE VisusEightCheck
+        <trim prefix="set" suffix="where vec_id = #{vec_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="iu != null">
+                , iu = #{iu}
+            </if>
+            <if test="miu != null">
+                , miu = #{miu}
+            </if>
+            <if test="eiu != null">
+                , eiu = #{eiu}
+            </if>
+            <if test="emiu != null">
+                , emiu = #{emiu}
+            </if>
+            <if test="emiu_in != null">
+                , emiu_in = #{emiu_in}
+            </if>
+            <if test="hiv != null">
+                , hiv = #{hiv}
+            </if>
+            <if test="b_kangti != null">
+                , b_kangti = #{b_kangti}
+            </if>
+            <if test="meidu != null">
+                , meidu = #{meidu}
+            </if>
+            <if test="v_time != null">
+                , v_time = #{v_time}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteVisusEightCheck" parameterType="com.njupt.po.VisusEightCheck">
+        delete from VisusEightCheck WHERE vec_id = #{vec_id}
+    </delete>
+
+ </mapper>

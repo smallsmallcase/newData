@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.SlidTime">
+    <insert id="saveSlidTime" useGeneratedKeys="true" keyProperty="st_id" parameterType="com.njupt.po.SlidTime">
+        insert into SlidTime(
+                basic_id,
+                s_time,
+                lxmy_time,
+                qwdby,
+                lxhm_time,
+                lxm_time,
+                hdd
+                        
+        ) values(
+              #{basic_id},
+              #{s_time},
+              #{lxmy_time},
+              #{qwdby},
+              #{lxhm_time},
+              #{lxm_time},
+              #{hdd}
+              )
+    </insert>
+
+<select id="querySlidTime" parameterType="com.njupt.po.SlidTime" resultType="com.njupt.po.SlidTime">
+        SELECT basic_id,
+                s_time,
+                lxmy_time,
+                qwdby,
+                lxhm_time,
+                lxm_time,
+                hdd
+                ,st_id
+        from SlidTime
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="s_time != null">
+                and s_time = #{s_time}
+            </if>
+            <if test="lxmy_time != null">
+                and lxmy_time = #{lxmy_time}
+            </if>
+            <if test="qwdby != null">
+                and qwdby = #{qwdby}
+            </if>
+            <if test="lxhm_time != null">
+                and lxhm_time = #{lxhm_time}
+            </if>
+            <if test="lxm_time != null">
+                and lxm_time = #{lxm_time}
+            </if>
+            <if test="hdd != null">
+                and hdd = #{hdd}
+            </if>
+            <if test="st_id != null">
+                and st_id = #{st_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateSlidTime" parameterType="com.njupt.po.SlidTime">
+        UPDATE SlidTime
+        <trim prefix="set" suffix="where st_id = #{st_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="s_time != null">
+                , s_time = #{s_time}
+            </if>
+            <if test="lxmy_time != null">
+                , lxmy_time = #{lxmy_time}
+            </if>
+            <if test="qwdby != null">
+                , qwdby = #{qwdby}
+            </if>
+            <if test="lxhm_time != null">
+                , lxhm_time = #{lxhm_time}
+            </if>
+            <if test="lxm_time != null">
+                , lxm_time = #{lxm_time}
+            </if>
+            <if test="hdd != null">
+                , hdd = #{hdd}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteSlidTime" parameterType="com.njupt.po.SlidTime">
+        delete from SlidTime WHERE st_id = #{st_id}
+    </delete>
+
+ </mapper>

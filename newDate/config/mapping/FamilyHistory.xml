@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.FamilyHistory">
+    <insert id="saveFamilyHistory" useGeneratedKeys="true" keyProperty="dis_id" parameterType="com.njupt.po.FamilyHistory">
+        insert into FamilyHistory(
+                basic_id,
+                disease
+                        
+        ) values(
+              #{basic_id},
+              #{disease}
+              )
+    </insert>
+
+<select id="queryFamilyHistory" parameterType="com.njupt.po.FamilyHistory" resultType="com.njupt.po.FamilyHistory">
+        SELECT basic_id,
+                disease
+                ,dis_id
+        from FamilyHistory
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="disease != null">
+                and disease = #{disease}
+            </if>
+            <if test="dis_id != null">
+                and dis_id = #{dis_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateFamilyHistory" parameterType="com.njupt.po.FamilyHistory">
+        UPDATE FamilyHistory
+        <trim prefix="set" suffix="where dis_id = #{dis_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="disease != null">
+                , disease = #{disease}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteFamilyHistory" parameterType="com.njupt.po.FamilyHistory">
+        delete from FamilyHistory WHERE dis_id = #{dis_id}
+    </delete>
+
+ </mapper>

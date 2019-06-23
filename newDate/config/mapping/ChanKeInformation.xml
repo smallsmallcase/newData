@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.ChanKeInformation">
+    <insert id="saveChanKeInformation" useGeneratedKeys="true" keyProperty="ck_id" parameterType="com.njupt.po.ChanKeInformation">
+        insert into ChanKeInformation(
+                basic_id,
+                gonghigh,
+                fuwei,
+                taierdaxiao,
+                taifangwei,
+                taixin,
+                taixinweizhi,
+                qiangdu,
+                xianlou,
+                weizhi,
+                xianjie,
+                taimo,
+                gongjingzhidi,
+                gongjingweizhi,
+                gongjinglength,
+                gongjingkuozhang,
+                gongsuo,
+                gupenmeasure,
+                inlength,
+                outlength,
+                inoutlength,
+                record
+                        
+        ) values(
+              #{basic_id},
+              #{gonghigh},
+              #{fuwei},
+              #{taierdaxiao},
+              #{taifangwei},
+              #{taixin},
+              #{taixinweizhi},
+              #{qiangdu},
+              #{xianlou},
+              #{weizhi},
+              #{xianjie},
+              #{taimo},
+              #{gongjingzhidi},
+              #{gongjingweizhi},
+              #{gongjinglength},
+              #{gongjingkuozhang},
+              #{gongsuo},
+              #{gupenmeasure},
+              #{inlength},
+              #{outlength},
+              #{inoutlength},
+              #{record}
+              )
+    </insert>
+
+<select id="queryChanKeInformation" parameterType="com.njupt.po.ChanKeInformation" resultType="com.njupt.po.ChanKeInformation">
+        SELECT basic_id,
+                gonghigh,
+                fuwei,
+                taierdaxiao,
+                taifangwei,
+                taixin,
+                taixinweizhi,
+                qiangdu,
+                xianlou,
+                weizhi,
+                xianjie,
+                taimo,
+                gongjingzhidi,
+                gongjingweizhi,
+                gongjinglength,
+                gongjingkuozhang,
+                gongsuo,
+                gupenmeasure,
+                inlength,
+                outlength,
+                inoutlength,
+                record
+                ,ck_id
+        from ChanKeInformation
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="gonghigh != null">
+                and gonghigh = #{gonghigh}
+            </if>
+            <if test="fuwei != null">
+                and fuwei = #{fuwei}
+            </if>
+            <if test="taierdaxiao != null">
+                and taierdaxiao = #{taierdaxiao}
+            </if>
+            <if test="taifangwei != null">
+                and taifangwei = #{taifangwei}
+            </if>
+            <if test="taixin != null">
+                and taixin = #{taixin}
+            </if>
+            <if test="taixinweizhi != null">
+                and taixinweizhi = #{taixinweizhi}
+            </if>
+            <if test="qiangdu != null">
+                and qiangdu = #{qiangdu}
+            </if>
+            <if test="xianlou != null">
+                and xianlou = #{xianlou}
+            </if>
+            <if test="weizhi != null">
+                and weizhi = #{weizhi}
+            </if>
+            <if test="xianjie != null">
+                and xianjie = #{xianjie}
+            </if>
+            <if test="taimo != null">
+                and taimo = #{taimo}
+            </if>
+            <if test="gongjingzhidi != null">
+                and gongjingzhidi = #{gongjingzhidi}
+            </if>
+            <if test="gongjingweizhi != null">
+                and gongjingweizhi = #{gongjingweizhi}
+            </if>
+            <if test="gongjinglength != null">
+                and gongjinglength = #{gongjinglength}
+            </if>
+            <if test="gongjingkuozhang != null">
+                and gongjingkuozhang = #{gongjingkuozhang}
+            </if>
+            <if test="gongsuo != null">
+                and gongsuo = #{gongsuo}
+            </if>
+            <if test="gupenmeasure != null">
+                and gupenmeasure = #{gupenmeasure}
+            </if>
+            <if test="inlength != null">
+                and inlength = #{inlength}
+            </if>
+            <if test="outlength != null">
+                and outlength = #{outlength}
+            </if>
+            <if test="inoutlength != null">
+                and inoutlength = #{inoutlength}
+            </if>
+            <if test="record != null">
+                and record = #{record}
+            </if>
+            <if test="ck_id != null">
+                and ck_id = #{ck_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateChanKeInformation" parameterType="com.njupt.po.ChanKeInformation">
+        UPDATE ChanKeInformation
+        <trim prefix="set" suffix="where ck_id = #{ck_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="gonghigh != null">
+                , gonghigh = #{gonghigh}
+            </if>
+            <if test="fuwei != null">
+                , fuwei = #{fuwei}
+            </if>
+            <if test="taierdaxiao != null">
+                , taierdaxiao = #{taierdaxiao}
+            </if>
+            <if test="taifangwei != null">
+                , taifangwei = #{taifangwei}
+            </if>
+            <if test="taixin != null">
+                , taixin = #{taixin}
+            </if>
+            <if test="taixinweizhi != null">
+                , taixinweizhi = #{taixinweizhi}
+            </if>
+            <if test="qiangdu != null">
+                , qiangdu = #{qiangdu}
+            </if>
+            <if test="xianlou != null">
+                , xianlou = #{xianlou}
+            </if>
+            <if test="weizhi != null">
+                , weizhi = #{weizhi}
+            </if>
+            <if test="xianjie != null">
+                , xianjie = #{xianjie}
+            </if>
+            <if test="taimo != null">
+                , taimo = #{taimo}
+            </if>
+            <if test="gongjingzhidi != null">
+                , gongjingzhidi = #{gongjingzhidi}
+            </if>
+            <if test="gongjingweizhi != null">
+                , gongjingweizhi = #{gongjingweizhi}
+            </if>
+            <if test="gongjinglength != null">
+                , gongjinglength = #{gongjinglength}
+            </if>
+            <if test="gongjingkuozhang != null">
+                , gongjingkuozhang = #{gongjingkuozhang}
+            </if>
+            <if test="gongsuo != null">
+                , gongsuo = #{gongsuo}
+            </if>
+            <if test="gupenmeasure != null">
+                , gupenmeasure = #{gupenmeasure}
+            </if>
+            <if test="inlength != null">
+                , inlength = #{inlength}
+            </if>
+            <if test="outlength != null">
+                , outlength = #{outlength}
+            </if>
+            <if test="inoutlength != null">
+                , inoutlength = #{inoutlength}
+            </if>
+            <if test="record != null">
+                , record = #{record}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteChanKeInformation" parameterType="com.njupt.po.ChanKeInformation">
+        delete from ChanKeInformation WHERE ck_id = #{ck_id}
+    </delete>
+
+ </mapper>

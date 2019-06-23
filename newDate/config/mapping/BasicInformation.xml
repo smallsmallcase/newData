@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.BasicInformation">
+    <insert id="saveBasicInformation" useGeneratedKeys="true" keyProperty="basic_id" parameterType="com.njupt.po.BasicInformation">
+        insert into BasicInformation(
+                personname,
+                personsex,
+                personage,
+                personmarry,
+                personborn,
+                personnation,
+                personoccupation,
+                personeducation,
+                personworkadress,
+                personnowadress,
+                personintime,
+                personouttime,
+                ad_number
+                        
+        ) values(
+              #{personname},
+              #{personsex},
+              #{personage},
+              #{personmarry},
+              #{personborn},
+              #{personnation},
+              #{personoccupation},
+              #{personeducation},
+              #{personworkadress},
+              #{personnowadress},
+              #{personintime},
+              #{personouttime},
+              #{ad_number}
+              )
+    </insert>
+
+<select id="queryBasicInformation" parameterType="com.njupt.po.BasicInformation" resultType="com.njupt.po.BasicInformation">
+        SELECT personname,
+                personsex,
+                personage,
+                personmarry,
+                personborn,
+                personnation,
+                personoccupation,
+                personeducation,
+                personworkadress,
+                personnowadress,
+                personintime,
+                personouttime,
+                ad_number
+                ,basic_id
+        from BasicInformation
+        <trim prefix="where" prefixOverrides="and">
+            <if test="personname != null">
+                and personname = #{personname}
+            </if>
+            <if test="personsex != null">
+                and personsex = #{personsex}
+            </if>
+            <if test="personage != null">
+                and personage = #{personage}
+            </if>
+            <if test="personmarry != null">
+                and personmarry = #{personmarry}
+            </if>
+            <if test="personborn != null">
+                and personborn = #{personborn}
+            </if>
+            <if test="personnation != null">
+                and personnation = #{personnation}
+            </if>
+            <if test="personoccupation != null">
+                and personoccupation = #{personoccupation}
+            </if>
+            <if test="personeducation != null">
+                and personeducation = #{personeducation}
+            </if>
+            <if test="personworkadress != null">
+                and personworkadress = #{personworkadress}
+            </if>
+            <if test="personnowadress != null">
+                and personnowadress = #{personnowadress}
+            </if>
+            <if test="personintime != null">
+                and personintime = #{personintime}
+            </if>
+            <if test="personouttime != null">
+                and personouttime = #{personouttime}
+            </if>
+            <if test="ad_number != null">
+                and ad_number = #{ad_number}
+            </if>
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateBasicInformation" parameterType="com.njupt.po.BasicInformation">
+        UPDATE BasicInformation
+        <trim prefix="set" suffix="where basic_id = #{basic_id}"  prefixOverrides=",">
+            <if test="personname != null">
+                , personname = #{personname}
+            </if>
+            <if test="personsex != null">
+                , personsex = #{personsex}
+            </if>
+            <if test="personage != null">
+                , personage = #{personage}
+            </if>
+            <if test="personmarry != null">
+                , personmarry = #{personmarry}
+            </if>
+            <if test="personborn != null">
+                , personborn = #{personborn}
+            </if>
+            <if test="personnation != null">
+                , personnation = #{personnation}
+            </if>
+            <if test="personoccupation != null">
+                , personoccupation = #{personoccupation}
+            </if>
+            <if test="personeducation != null">
+                , personeducation = #{personeducation}
+            </if>
+            <if test="personworkadress != null">
+                , personworkadress = #{personworkadress}
+            </if>
+            <if test="personnowadress != null">
+                , personnowadress = #{personnowadress}
+            </if>
+            <if test="personintime != null">
+                , personintime = #{personintime}
+            </if>
+            <if test="personouttime != null">
+                , personouttime = #{personouttime}
+            </if>
+            <if test="ad_number != null">
+                , ad_number = #{ad_number}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteBasicInformation" parameterType="com.njupt.po.BasicInformation">
+        delete from BasicInformation WHERE basic_id = #{basic_id}
+    </delete>
+
+
+    <select id="selectListByBasic_id" parameterType="list" resultType="com.njupt.po.BasicInformation">
+        SELECT personname,ad_number,basic_id from BasicInformation WHERE basic_id in
+        <foreach collection="list" item="id" open="(" close=")"
+                 separator=",">
+            #{id}
+        </foreach>
+    </select>
+ </mapper>

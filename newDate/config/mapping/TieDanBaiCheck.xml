@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.TieDanBaiCheck">
+    <insert id="saveTieDanBaiCheck" useGeneratedKeys="true" keyProperty="tdbc_id" parameterType="com.njupt.po.TieDanBaiCheck">
+        insert into TieDanBaiCheck(
+                basic_id,
+                ch_time,
+                ch
+                        
+        ) values(
+              #{basic_id},
+              #{ch_time},
+              #{ch}
+              )
+    </insert>
+
+<select id="queryTieDanBaiCheck" parameterType="com.njupt.po.TieDanBaiCheck" resultType="com.njupt.po.TieDanBaiCheck">
+        SELECT basic_id,
+                ch_time,
+                ch
+                ,tdbc_id
+        from TieDanBaiCheck
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="ch_time != null">
+                and ch_time = #{ch_time}
+            </if>
+            <if test="ch != null">
+                and ch = #{ch}
+            </if>
+            <if test="tdbc_id != null">
+                and tdbc_id = #{tdbc_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateTieDanBaiCheck" parameterType="com.njupt.po.TieDanBaiCheck">
+        UPDATE TieDanBaiCheck
+        <trim prefix="set" suffix="where tdbc_id = #{tdbc_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="ch_time != null">
+                , ch_time = #{ch_time}
+            </if>
+            <if test="ch != null">
+                , ch = #{ch}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteTieDanBaiCheck" parameterType="com.njupt.po.TieDanBaiCheck">
+        delete from TieDanBaiCheck WHERE tdbc_id = #{tdbc_id}
+    </delete>
+
+ </mapper>

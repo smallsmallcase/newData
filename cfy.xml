@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.mybatis.Cfy">
+    <insert id="saveCfy" parameterType="com.njupt.po.Cfy">
+        insert into Cfy(
+                time,
+                c_fanying_danbai,
+                basic_id
+                        
+        ) values(
+              #{time},
+              #{c_fanying_danbai},
+              #{basic_id}
+              )
+    </insert>
+
+<select id="queryCfy" parameterType="com.njupt.po.Cfy" resultType="com.njupt.po.Cfy">
+        SELECT time,
+                c_fanying_danbai,
+                basic_id
+                ,cf_id
+        from Cfy
+        <trim prefix="where" prefixOverrides="and">
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="c_fanying_danbai != null">
+                and c_fanying_danbai = #{c_fanying_danbai}
+            </if>
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="cf_id != null">
+                and cf_id = #{cf_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateCfy" parameterType="com.njupt.po.Cfy">
+        UPDATE cfy
+        <trim prefix="set" suffix="where cf_id = #{cf_id}" suffixOverrides="," prefixOverrides="and">
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="c_fanying_danbai != null">
+                and c_fanying_danbai = #{c_fanying_danbai}
+            </if>
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="delateCfy" parameterType="com.njupt.po.Cfy">
+        delete from Cfy WHERE cf_id = #{cf_id}
+    </delete>
+
+ </mapper>

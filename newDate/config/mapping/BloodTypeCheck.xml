@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.BloodTypeCheck">
+    <insert id="saveBloodTypeCheck" useGeneratedKeys="true" keyProperty="blo_id" parameterType="com.njupt.po.BloodTypeCheck">
+        insert into BloodTypeCheck(
+                basic_id,
+                abo,
+                rh
+                        
+        ) values(
+              #{basic_id},
+              #{abo},
+              #{rh}
+              )
+    </insert>
+
+<select id="queryBloodTypeCheck" parameterType="com.njupt.po.BloodTypeCheck" resultType="com.njupt.po.BloodTypeCheck">
+        SELECT basic_id,
+                abo,
+                rh
+                ,blo_id
+        from BloodTypeCheck
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="abo != null">
+                and abo = #{abo}
+            </if>
+            <if test="rh != null">
+                and rh = #{rh}
+            </if>
+            <if test="blo_id != null">
+                and blo_id = #{blo_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateBloodTypeCheck" parameterType="com.njupt.po.BloodTypeCheck">
+        UPDATE BloodTypeCheck
+        <trim prefix="set" suffix="where blo_id = #{blo_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="abo != null">
+                , abo = #{abo}
+            </if>
+            <if test="rh != null">
+                , rh = #{rh}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteBloodTypeCheck" parameterType="com.njupt.po.BloodTypeCheck">
+        delete from BloodTypeCheck WHERE blo_id = #{blo_id}
+    </delete>
+
+ </mapper>

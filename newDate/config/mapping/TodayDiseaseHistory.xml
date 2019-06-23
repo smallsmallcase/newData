@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.TodayDiseaseHistory">
+    <insert id="saveTodayDiseaseHistory" useGeneratedKeys="true" keyProperty="today_id" parameterType="com.njupt.po.TodayDiseaseHistory">
+        insert into TodayDiseaseHistory(
+                basic_id,
+                zu_chang,
+                zao_chang,
+                liu_chang,
+                cu_chang,
+                yunzhou,
+                lmp,
+                edc,
+                fu_tong,
+                fu_jxtime,
+                fu_cxtime,
+                blood,
+                bloodvom,
+                water,
+                watervom,
+                jianhong,
+                zhui_zhang,
+                zaoqibushi,
+                bushi_time,
+                taidongtime,
+                gonggao,
+                fuwei,
+                earlybaotai,
+                baotai_drag,
+                virusinfection,
+                torch,
+                fangshe,
+                shijdid,
+                youhaiwuzhi,
+                yhshijdid,
+                jianka,
+                tangshai,
+                cuoshi,
+                chaosheng,
+                yichang,
+                xueya,
+                gxycs,
+                xuetang,
+                gxtcs,
+                abobloodtype,
+                rhbloodtype,
+                gongsuo,
+                taidong
+                        
+        ) values(
+              #{basic_id},
+              #{zu_chang},
+              #{zao_chang},
+              #{liu_chang},
+              #{cu_chang},
+              #{yunzhou},
+              #{lmp},
+              #{edc},
+              #{fu_tong},
+              #{fu_jxtime},
+              #{fu_cxtime},
+              #{blood},
+              #{bloodvom},
+              #{water},
+              #{watervom},
+              #{jianhong},
+              #{zhui_zhang},
+              #{zaoqibushi},
+              #{bushi_time},
+              #{taidongtime},
+              #{gonggao},
+              #{fuwei},
+              #{earlybaotai},
+              #{baotai_drag},
+              #{virusinfection},
+              #{torch},
+              #{fangshe},
+              #{shijdid},
+              #{youhaiwuzhi},
+              #{yhshijdid},
+              #{jianka},
+              #{tangshai},
+              #{cuoshi},
+              #{chaosheng},
+              #{yichang},
+              #{xueya},
+              #{gxycs},
+              #{xuetang},
+              #{gxtcs},
+              #{abobloodtype},
+              #{rhbloodtype},
+              #{gongsuo},
+              #{taidong}
+              )
+    </insert>
+
+<select id="queryTodayDiseaseHistory" parameterType="com.njupt.po.TodayDiseaseHistory" resultType="com.njupt.po.TodayDiseaseHistory">
+        SELECT basic_id,
+                zu_chang,
+                zao_chang,
+                liu_chang,
+                cu_chang,
+                yunzhou,
+                lmp,
+                edc,
+                fu_tong,
+                fu_jxtime,
+                fu_cxtime,
+                blood,
+                bloodvom,
+                water,
+                watervom,
+                jianhong,
+                zhui_zhang,
+                zaoqibushi,
+                bushi_time,
+                taidongtime,
+                gonggao,
+                fuwei,
+                earlybaotai,
+                baotai_drag,
+                virusinfection,
+                torch,
+                fangshe,
+                shijdid,
+                youhaiwuzhi,
+                yhshijdid,
+                jianka,
+                tangshai,
+                cuoshi,
+                chaosheng,
+                yichang,
+                xueya,
+                gxycs,
+                xuetang,
+                gxtcs,
+                abobloodtype,
+                rhbloodtype,
+                gongsuo,
+                taidong
+                ,today_id
+        from TodayDiseaseHistory
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="zu_chang != null">
+                and zu_chang = #{zu_chang}
+            </if>
+            <if test="zao_chang != null">
+                and zao_chang = #{zao_chang}
+            </if>
+            <if test="liu_chang != null">
+                and liu_chang = #{liu_chang}
+            </if>
+            <if test="cu_chang != null">
+                and cu_chang = #{cu_chang}
+            </if>
+            <if test="yunzhou != null">
+                and yunzhou = #{yunzhou}
+            </if>
+            <if test="lmp != null">
+                and lmp = #{lmp}
+            </if>
+            <if test="edc != null">
+                and edc = #{edc}
+            </if>
+            <if test="fu_tong != null">
+                and fu_tong = #{fu_tong}
+            </if>
+            <if test="fu_jxtime != null">
+                and fu_jxtime = #{fu_jxtime}
+            </if>
+            <if test="fu_cxtime != null">
+                and fu_cxtime = #{fu_cxtime}
+            </if>
+            <if test="blood != null">
+                and blood = #{blood}
+            </if>
+            <if test="bloodvom != null">
+                and bloodvom = #{bloodvom}
+            </if>
+            <if test="water != null">
+                and water = #{water}
+            </if>
+            <if test="watervom != null">
+                and watervom = #{watervom}
+            </if>
+            <if test="jianhong != null">
+                and jianhong = #{jianhong}
+            </if>
+            <if test="zhui_zhang != null">
+                and zhui_zhang = #{zhui_zhang}
+            </if>
+            <if test="zaoqibushi != null">
+                and zaoqibushi = #{zaoqibushi}
+            </if>
+            <if test="bushi_time != null">
+                and bushi_time = #{bushi_time}
+            </if>
+            <if test="taidongtime != null">
+                and taidongtime = #{taidongtime}
+            </if>
+            <if test="gonggao != null">
+                and gonggao = #{gonggao}
+            </if>
+            <if test="fuwei != null">
+                and fuwei = #{fuwei}
+            </if>
+            <if test="earlybaotai != null">
+                and earlybaotai = #{earlybaotai}
+            </if>
+            <if test="baotai_drag != null">
+                and baotai_drag = #{baotai_drag}
+            </if>
+            <if test="virusinfection != null">
+                and virusinfection = #{virusinfection}
+            </if>
+            <if test="torch != null">
+                and torch = #{torch}
+            </if>
+            <if test="fangshe != null">
+                and fangshe = #{fangshe}
+            </if>
+            <if test="shijdid != null">
+                and shijdid = #{shijdid}
+            </if>
+            <if test="youhaiwuzhi != null">
+                and youhaiwuzhi = #{youhaiwuzhi}
+            </if>
+            <if test="yhshijdid != null">
+                and yhshijdid = #{yhshijdid}
+            </if>
+            <if test="jianka != null">
+                and jianka = #{jianka}
+            </if>
+            <if test="tangshai != null">
+                and tangshai = #{tangshai}
+            </if>
+            <if test="cuoshi != null">
+                and cuoshi = #{cuoshi}
+            </if>
+            <if test="chaosheng != null">
+                and chaosheng = #{chaosheng}
+            </if>
+            <if test="yichang != null">
+                and yichang = #{yichang}
+            </if>
+            <if test="xueya != null">
+                and xueya = #{xueya}
+            </if>
+            <if test="gxycs != null">
+                and gxycs = #{gxycs}
+            </if>
+            <if test="xuetang != null">
+                and xuetang = #{xuetang}
+            </if>
+            <if test="gxtcs != null">
+                and gxtcs = #{gxtcs}
+            </if>
+            <if test="abobloodtype != null">
+                and abobloodtype = #{abobloodtype}
+            </if>
+            <if test="rhbloodtype != null">
+                and rhbloodtype = #{rhbloodtype}
+            </if>
+            <if test="gongsuo != null">
+                and gongsuo = #{gongsuo}
+            </if>
+            <if test="taidong != null">
+                and taidong = #{taidong}
+            </if>
+            <if test="today_id != null">
+                and today_id = #{today_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateTodayDiseaseHistory" parameterType="com.njupt.po.TodayDiseaseHistory">
+        UPDATE TodayDiseaseHistory
+        <trim prefix="set" suffix="where today_id = #{today_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="zu_chang != null">
+                , zu_chang = #{zu_chang}
+            </if>
+            <if test="zao_chang != null">
+                , zao_chang = #{zao_chang}
+            </if>
+            <if test="liu_chang != null">
+                , liu_chang = #{liu_chang}
+            </if>
+            <if test="cu_chang != null">
+                , cu_chang = #{cu_chang}
+            </if>
+            <if test="yunzhou != null">
+                , yunzhou = #{yunzhou}
+            </if>
+            <if test="lmp != null">
+                , lmp = #{lmp}
+            </if>
+            <if test="edc != null">
+                , edc = #{edc}
+            </if>
+            <if test="fu_tong != null">
+                , fu_tong = #{fu_tong}
+            </if>
+            <if test="fu_jxtime != null">
+                , fu_jxtime = #{fu_jxtime}
+            </if>
+            <if test="fu_cxtime != null">
+                , fu_cxtime = #{fu_cxtime}
+            </if>
+            <if test="blood != null">
+                , blood = #{blood}
+            </if>
+            <if test="bloodvom != null">
+                , bloodvom = #{bloodvom}
+            </if>
+            <if test="water != null">
+                , water = #{water}
+            </if>
+            <if test="watervom != null">
+                , watervom = #{watervom}
+            </if>
+            <if test="jianhong != null">
+                , jianhong = #{jianhong}
+            </if>
+            <if test="zhui_zhang != null">
+                , zhui_zhang = #{zhui_zhang}
+            </if>
+            <if test="zaoqibushi != null">
+                , zaoqibushi = #{zaoqibushi}
+            </if>
+            <if test="bushi_time != null">
+                , bushi_time = #{bushi_time}
+            </if>
+            <if test="taidongtime != null">
+                , taidongtime = #{taidongtime}
+            </if>
+            <if test="gonggao != null">
+                , gonggao = #{gonggao}
+            </if>
+            <if test="fuwei != null">
+                , fuwei = #{fuwei}
+            </if>
+            <if test="earlybaotai != null">
+                , earlybaotai = #{earlybaotai}
+            </if>
+            <if test="baotai_drag != null">
+                , baotai_drag = #{baotai_drag}
+            </if>
+            <if test="virusinfection != null">
+                , virusinfection = #{virusinfection}
+            </if>
+            <if test="torch != null">
+                , torch = #{torch}
+            </if>
+            <if test="fangshe != null">
+                , fangshe = #{fangshe}
+            </if>
+            <if test="shijdid != null">
+                , shijdid = #{shijdid}
+            </if>
+            <if test="youhaiwuzhi != null">
+                , youhaiwuzhi = #{youhaiwuzhi}
+            </if>
+            <if test="yhshijdid != null">
+                , yhshijdid = #{yhshijdid}
+            </if>
+            <if test="jianka != null">
+                , jianka = #{jianka}
+            </if>
+            <if test="tangshai != null">
+                , tangshai = #{tangshai}
+            </if>
+            <if test="cuoshi != null">
+                , cuoshi = #{cuoshi}
+            </if>
+            <if test="chaosheng != null">
+                , chaosheng = #{chaosheng}
+            </if>
+            <if test="yichang != null">
+                , yichang = #{yichang}
+            </if>
+            <if test="xueya != null">
+                , xueya = #{xueya}
+            </if>
+            <if test="gxycs != null">
+                , gxycs = #{gxycs}
+            </if>
+            <if test="xuetang != null">
+                , xuetang = #{xuetang}
+            </if>
+            <if test="gxtcs != null">
+                , gxtcs = #{gxtcs}
+            </if>
+            <if test="abobloodtype != null">
+                , abobloodtype = #{abobloodtype}
+            </if>
+            <if test="rhbloodtype != null">
+                , rhbloodtype = #{rhbloodtype}
+            </if>
+            <if test="gongsuo != null">
+                , gongsuo = #{gongsuo}
+            </if>
+            <if test="taidong != null">
+                , taidong = #{taidong}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteTodayDiseaseHistory" parameterType="com.njupt.po.TodayDiseaseHistory">
+        delete from TodayDiseaseHistory WHERE today_id = #{today_id}
+    </delete>
+
+ </mapper>

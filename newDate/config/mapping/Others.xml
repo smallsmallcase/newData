@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.Others">
+    <insert id="saveOthers" useGeneratedKeys="true" keyProperty="o_id" parameterType="com.njupt.po.Others">
+        insert into Others(
+                basic_id,
+                fu_tong,
+                fu_jxtime,
+                fu_cxtime,
+                blood,
+                bloodvom,
+                water,
+                watervom,
+                jianhong,
+                zhui_zhang,
+                o_time
+                        
+        ) values(
+              #{basic_id},
+              #{fu_tong},
+              #{fu_jxtime},
+              #{fu_cxtime},
+              #{blood},
+              #{bloodvom},
+              #{water},
+              #{watervom},
+              #{jianhong},
+              #{zhui_zhang},
+              #{o_time}
+              )
+    </insert>
+
+<select id="queryOthers" parameterType="com.njupt.po.Others" resultType="com.njupt.po.Others">
+        SELECT basic_id,
+                fu_tong,
+                fu_jxtime,
+                fu_cxtime,
+                blood,
+                bloodvom,
+                water,
+                watervom,
+                jianhong,
+                zhui_zhang,
+                o_time
+                ,o_id
+        from Others
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="fu_tong != null">
+                and fu_tong = #{fu_tong}
+            </if>
+            <if test="fu_jxtime != null">
+                and fu_jxtime = #{fu_jxtime}
+            </if>
+            <if test="fu_cxtime != null">
+                and fu_cxtime = #{fu_cxtime}
+            </if>
+            <if test="blood != null">
+                and blood = #{blood}
+            </if>
+            <if test="bloodvom != null">
+                and bloodvom = #{bloodvom}
+            </if>
+            <if test="water != null">
+                and water = #{water}
+            </if>
+            <if test="watervom != null">
+                and watervom = #{watervom}
+            </if>
+            <if test="jianhong != null">
+                and jianhong = #{jianhong}
+            </if>
+            <if test="zhui_zhang != null">
+                and zhui_zhang = #{zhui_zhang}
+            </if>
+            <if test="o_time != null">
+                and o_time = #{o_time}
+            </if>
+            <if test="o_id != null">
+                and o_id = #{o_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateOthers" parameterType="com.njupt.po.Others">
+        UPDATE Others
+        <trim prefix="set" suffix="where o_id = #{o_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="fu_tong != null">
+                , fu_tong = #{fu_tong}
+            </if>
+            <if test="fu_jxtime != null">
+                , fu_jxtime = #{fu_jxtime}
+            </if>
+            <if test="fu_cxtime != null">
+                , fu_cxtime = #{fu_cxtime}
+            </if>
+            <if test="blood != null">
+                , blood = #{blood}
+            </if>
+            <if test="bloodvom != null">
+                , bloodvom = #{bloodvom}
+            </if>
+            <if test="water != null">
+                , water = #{water}
+            </if>
+            <if test="watervom != null">
+                , watervom = #{watervom}
+            </if>
+            <if test="jianhong != null">
+                , jianhong = #{jianhong}
+            </if>
+            <if test="zhui_zhang != null">
+                , zhui_zhang = #{zhui_zhang}
+            </if>
+            <if test="o_time != null">
+                , o_time = #{o_time}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteOthers" parameterType="com.njupt.po.Others">
+        delete from Others WHERE o_id = #{o_id}
+    </delete>
+
+ </mapper>

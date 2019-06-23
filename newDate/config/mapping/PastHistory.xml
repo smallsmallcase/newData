@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.PastHistory">
+    <insert id="savePastHistory" useGeneratedKeys="true" keyProperty="pas_id" parameterType="com.njupt.po.PastHistory">
+        insert into PastHistory(
+                basic_id,
+                xfs_diseasee,
+                dianxian_disease,
+                infectioushistory,
+                yufang_disease,
+                surgicalhistory,
+                transfusion
+                        
+        ) values(
+              #{basic_id},
+              #{xfs_diseasee},
+              #{dianxian_disease},
+              #{infectioushistory},
+              #{yufang_disease},
+              #{surgicalhistory},
+              #{transfusion}
+              )
+    </insert>
+
+<select id="queryPastHistory" parameterType="com.njupt.po.PastHistory" resultType="com.njupt.po.PastHistory">
+        SELECT basic_id,
+                xfs_diseasee,
+                dianxian_disease,
+                infectioushistory,
+                yufang_disease,
+                surgicalhistory,
+                transfusion
+                ,pas_id
+        from PastHistory
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="xfs_diseasee != null">
+                and xfs_diseasee = #{xfs_diseasee}
+            </if>
+            <if test="dianxian_disease != null">
+                and dianxian_disease = #{dianxian_disease}
+            </if>
+            <if test="infectioushistory != null">
+                and infectioushistory = #{infectioushistory}
+            </if>
+            <if test="yufang_disease != null">
+                and yufang_disease = #{yufang_disease}
+            </if>
+            <if test="surgicalhistory != null">
+                and surgicalhistory = #{surgicalhistory}
+            </if>
+            <if test="transfusion != null">
+                and transfusion = #{transfusion}
+            </if>
+            <if test="pas_id != null">
+                and pas_id = #{pas_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updatePastHistory" parameterType="com.njupt.po.PastHistory">
+        UPDATE PastHistory
+        <trim prefix="set" suffix="where pas_id = #{pas_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="xfs_diseasee != null">
+                , xfs_diseasee = #{xfs_diseasee}
+            </if>
+            <if test="dianxian_disease != null">
+                , dianxian_disease = #{dianxian_disease}
+            </if>
+            <if test="infectioushistory != null">
+                , infectioushistory = #{infectioushistory}
+            </if>
+            <if test="yufang_disease != null">
+                , yufang_disease = #{yufang_disease}
+            </if>
+            <if test="surgicalhistory != null">
+                , surgicalhistory = #{surgicalhistory}
+            </if>
+            <if test="transfusion != null">
+                , transfusion = #{transfusion}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deletePastHistory" parameterType="com.njupt.po.PastHistory">
+        delete from PastHistory WHERE pas_id = #{pas_id}
+    </delete>
+
+ </mapper>

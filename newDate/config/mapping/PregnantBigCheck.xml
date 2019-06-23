@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.PregnantBigCheck">
+    <insert id="savePregnantBigCheck" useGeneratedKeys="true" keyProperty="pbg_id" parameterType="com.njupt.po.PregnantBigCheck">
+        insert into PregnantBigCheck(
+                basic_id,
+                k,
+                na,
+                cl,
+                ca,
+                p,
+                co2,
+                tp,
+                alb,
+                gb,
+                whiteballratio,
+                prealbumin,
+                tba,
+                tb,
+                brd,
+                urd,
+                alt,
+                got,
+                alk,
+                gpt,
+                ldh,
+                ce,
+                glucose,
+                bun,
+                cr,
+                ua,
+                cystain,
+                p_time
+                        
+        ) values(
+              #{basic_id},
+              #{k},
+              #{na},
+              #{cl},
+              #{ca},
+              #{p},
+              #{co2},
+              #{tp},
+              #{alb},
+              #{gb},
+              #{whiteballratio},
+              #{prealbumin},
+              #{tba},
+              #{tb},
+              #{brd},
+              #{urd},
+              #{alt},
+              #{got},
+              #{alk},
+              #{gpt},
+              #{ldh},
+              #{ce},
+              #{glucose},
+              #{bun},
+              #{cr},
+              #{ua},
+              #{cystain},
+              #{p_time}
+              )
+    </insert>
+
+<select id="queryPregnantBigCheck" parameterType="com.njupt.po.PregnantBigCheck" resultType="com.njupt.po.PregnantBigCheck">
+        SELECT basic_id,
+                k,
+                na,
+                cl,
+                ca,
+                p,
+                co2,
+                tp,
+                alb,
+                gb,
+                whiteballratio,
+                prealbumin,
+                tba,
+                tb,
+                brd,
+                urd,
+                alt,
+                got,
+                alk,
+                gpt,
+                ldh,
+                ce,
+                glucose,
+                bun,
+                cr,
+                ua,
+                cystain,
+                p_time
+                ,pbg_id
+        from PregnantBigCheck
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="k != null">
+                and k = #{k}
+            </if>
+            <if test="na != null">
+                and na = #{na}
+            </if>
+            <if test="cl != null">
+                and cl = #{cl}
+            </if>
+            <if test="ca != null">
+                and ca = #{ca}
+            </if>
+            <if test="p != null">
+                and p = #{p}
+            </if>
+            <if test="co2 != null">
+                and co2 = #{co2}
+            </if>
+            <if test="tp != null">
+                and tp = #{tp}
+            </if>
+            <if test="alb != null">
+                and alb = #{alb}
+            </if>
+            <if test="gb != null">
+                and gb = #{gb}
+            </if>
+            <if test="whiteballratio != null">
+                and whiteballratio = #{whiteballratio}
+            </if>
+            <if test="prealbumin != null">
+                and prealbumin = #{prealbumin}
+            </if>
+            <if test="tba != null">
+                and tba = #{tba}
+            </if>
+            <if test="tb != null">
+                and tb = #{tb}
+            </if>
+            <if test="brd != null">
+                and brd = #{brd}
+            </if>
+            <if test="urd != null">
+                and urd = #{urd}
+            </if>
+            <if test="alt != null">
+                and alt = #{alt}
+            </if>
+            <if test="got != null">
+                and got = #{got}
+            </if>
+            <if test="alk != null">
+                and alk = #{alk}
+            </if>
+            <if test="gpt != null">
+                and gpt = #{gpt}
+            </if>
+            <if test="ldh != null">
+                and ldh = #{ldh}
+            </if>
+            <if test="ce != null">
+                and ce = #{ce}
+            </if>
+            <if test="glucose != null">
+                and glucose = #{glucose}
+            </if>
+            <if test="bun != null">
+                and bun = #{bun}
+            </if>
+            <if test="cr != null">
+                and cr = #{cr}
+            </if>
+            <if test="ua != null">
+                and ua = #{ua}
+            </if>
+            <if test="cystain != null">
+                and cystain = #{cystain}
+            </if>
+            <if test="p_time != null">
+                and p_time = #{p_time}
+            </if>
+            <if test="pbg_id != null">
+                and pbg_id = #{pbg_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updatePregnantBigCheck" parameterType="com.njupt.po.PregnantBigCheck">
+        UPDATE PregnantBigCheck
+        <trim prefix="set" suffix="where pbg_id = #{pbg_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="k != null">
+                , k = #{k}
+            </if>
+            <if test="na != null">
+                , na = #{na}
+            </if>
+            <if test="cl != null">
+                , cl = #{cl}
+            </if>
+            <if test="ca != null">
+                , ca = #{ca}
+            </if>
+            <if test="p != null">
+                , p = #{p}
+            </if>
+            <if test="co2 != null">
+                , co2 = #{co2}
+            </if>
+            <if test="tp != null">
+                , tp = #{tp}
+            </if>
+            <if test="alb != null">
+                , alb = #{alb}
+            </if>
+            <if test="gb != null">
+                , gb = #{gb}
+            </if>
+            <if test="whiteballratio != null">
+                , whiteballratio = #{whiteballratio}
+            </if>
+            <if test="prealbumin != null">
+                , prealbumin = #{prealbumin}
+            </if>
+            <if test="tba != null">
+                , tba = #{tba}
+            </if>
+            <if test="tb != null">
+                , tb = #{tb}
+            </if>
+            <if test="brd != null">
+                , brd = #{brd}
+            </if>
+            <if test="urd != null">
+                , urd = #{urd}
+            </if>
+            <if test="alt != null">
+                , alt = #{alt}
+            </if>
+            <if test="got != null">
+                , got = #{got}
+            </if>
+            <if test="alk != null">
+                , alk = #{alk}
+            </if>
+            <if test="gpt != null">
+                , gpt = #{gpt}
+            </if>
+            <if test="ldh != null">
+                , ldh = #{ldh}
+            </if>
+            <if test="ce != null">
+                , ce = #{ce}
+            </if>
+            <if test="glucose != null">
+                , glucose = #{glucose}
+            </if>
+            <if test="bun != null">
+                , bun = #{bun}
+            </if>
+            <if test="cr != null">
+                , cr = #{cr}
+            </if>
+            <if test="ua != null">
+                , ua = #{ua}
+            </if>
+            <if test="cystain != null">
+                , cystain = #{cystain}
+            </if>
+            <if test="p_time != null">
+                , p_time = #{p_time}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deletePregnantBigCheck" parameterType="com.njupt.po.PregnantBigCheck">
+        delete from PregnantBigCheck WHERE pbg_id = #{pbg_id}
+    </delete>
+
+ </mapper>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.ElseDiscrible">
+    <insert id="saveElseDiscrible" useGeneratedKeys="true" keyProperty="el_id" parameterType="com.njupt.po.ElseDiscrible">
+        insert into ElseDiscrible(
+                basic_id,
+                intype,
+                fenmian,
+                changhoublood,
+                changruganran,
+                staytime,
+                money,
+                changhouyiyi,
+                chanchijilu,
+                AD
+                        
+        ) values(
+              #{basic_id},
+              #{intype},
+              #{fenmian},
+              #{changhoublood},
+              #{changruganran},
+              #{staytime},
+              #{money},
+              #{changhouyiyi},
+              #{chanchijilu},
+              #{AD}
+              )
+    </insert>
+
+<select id="queryElseDiscrible" parameterType="com.njupt.po.ElseDiscrible" resultType="com.njupt.po.ElseDiscrible">
+        SELECT basic_id,
+                intype,
+                fenmian,
+                changhoublood,
+                changruganran,
+                staytime,
+                money,
+                changhouyiyi,
+                chanchijilu,
+                AD
+                ,el_id
+        from ElseDiscrible
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="intype != null">
+                and intype = #{intype}
+            </if>
+            <if test="fenmian != null">
+                and fenmian = #{fenmian}
+            </if>
+            <if test="changhoublood != null">
+                and changhoublood = #{changhoublood}
+            </if>
+            <if test="changruganran != null">
+                and changruganran = #{changruganran}
+            </if>
+            <if test="staytime != null">
+                and staytime = #{staytime}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+            <if test="changhouyiyi != null">
+                and changhouyiyi = #{changhouyiyi}
+            </if>
+            <if test="chanchijilu != null">
+                and chanchijilu = #{chanchijilu}
+            </if>
+            <if test="AD != null">
+                and AD = #{AD}
+            </if>
+            <if test="el_id != null">
+                and el_id = #{el_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateElseDiscrible" parameterType="com.njupt.po.ElseDiscrible">
+        UPDATE ElseDiscrible
+        <trim prefix="set" suffix="where el_id = #{el_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="intype != null">
+                , intype = #{intype}
+            </if>
+            <if test="fenmian != null">
+                , fenmian = #{fenmian}
+            </if>
+            <if test="changhoublood != null">
+                , changhoublood = #{changhoublood}
+            </if>
+            <if test="changruganran != null">
+                , changruganran = #{changruganran}
+            </if>
+            <if test="staytime != null">
+                , staytime = #{staytime}
+            </if>
+            <if test="money != null">
+                , money = #{money}
+            </if>
+            <if test="changhouyiyi != null">
+                , changhouyiyi = #{changhouyiyi}
+            </if>
+            <if test="chanchijilu != null">
+                , chanchijilu = #{chanchijilu}
+            </if>
+            <if test="AD != null">
+                , AD = #{AD}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteElseDiscrible" parameterType="com.njupt.po.ElseDiscrible">
+        delete from ElseDiscrible WHERE el_id = #{el_id}
+    </delete>
+
+ </mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.HeadCount">
+
+
+
+    <select id="queryDiabetesHC"  resultType="int">
+        SELECT count(1) from ElseDiscrible where (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
+    </select>
+
+    <select id="queryHypertensionHC"  resultType="int">
+        SELECT count(1) from ElseDiscrible where AD like '%妊娠期高血压%'
+    </select>
+
+    <select id="queryBothHC"  resultType="int">
+        SELECT count(1) from ElseDiscrible where AD like '%妊娠期高血压%'
+        and (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
+    </select>
+
+
+
+ </mapper>

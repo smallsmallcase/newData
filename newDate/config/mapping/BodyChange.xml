@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.BodyChange">
+    <insert id="saveBodyChange" useGeneratedKeys="true" keyProperty="bc_id" parameterType="com.njupt.po.BodyChange">
+        insert into BodyChange(
+                basic_id,
+                person_high,
+                before_weight,
+                after_weight,
+                shuizhong
+                        
+        ) values(
+              #{basic_id},
+              #{person_high},
+              #{before_weight},
+              #{after_weight},
+              #{shuizhong}
+              )
+    </insert>
+
+<select id="queryBodyChange" parameterType="com.njupt.po.BodyChange" resultType="com.njupt.po.BodyChange">
+        SELECT basic_id,
+                person_high,
+                before_weight,
+                after_weight,
+                shuizhong
+                ,bc_id
+        from BodyChange
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="person_high != null">
+                and person_high = #{person_high}
+            </if>
+            <if test="before_weight != null">
+                and before_weight = #{before_weight}
+            </if>
+            <if test="after_weight != null">
+                and after_weight = #{after_weight}
+            </if>
+            <if test="shuizhong != null">
+                and shuizhong = #{shuizhong}
+            </if>
+            <if test="bc_id != null">
+                and bc_id = #{bc_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateBodyChange" parameterType="com.njupt.po.BodyChange">
+        UPDATE BodyChange
+        <trim prefix="set" suffix="where bc_id = #{bc_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="person_high != null">
+                , person_high = #{person_high}
+            </if>
+            <if test="before_weight != null">
+                , before_weight = #{before_weight}
+            </if>
+            <if test="after_weight != null">
+                , after_weight = #{after_weight}
+            </if>
+            <if test="shuizhong != null">
+                , shuizhong = #{shuizhong}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteBodyChange" parameterType="com.njupt.po.BodyChange">
+        delete from BodyChange WHERE bc_id = #{bc_id}
+    </delete>
+
+ </mapper>

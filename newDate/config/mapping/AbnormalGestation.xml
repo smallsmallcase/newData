@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.AbnormalGestation">
+    <insert id="saveAbnormalGestation" useGeneratedKeys="true" keyProperty="a_id" parameterType="com.njupt.po.AbnormalGestation">
+        insert into AbnormalGestation(
+                basic_id,
+                early_num,
+                rengong_num,
+                gongwaiyuan_num,
+                zhongqi_num,
+                yingchang_num,
+                taieryichang,
+                wanqiliuchang_num,
+                fengmian,
+                elsething
+                        
+        ) values(
+              #{basic_id},
+              #{early_num},
+              #{rengong_num},
+              #{gongwaiyuan_num},
+              #{zhongqi_num},
+              #{yingchang_num},
+              #{taieryichang},
+              #{wanqiliuchang_num},
+              #{fengmian},
+              #{elsething}
+              )
+    </insert>
+
+<select id="queryAbnormalGestation" parameterType="com.njupt.po.AbnormalGestation" resultType="com.njupt.po.AbnormalGestation">
+        SELECT basic_id,
+                early_num,
+                rengong_num,
+                gongwaiyuan_num,
+                zhongqi_num,
+                yingchang_num,
+                taieryichang,
+                wanqiliuchang_num,
+                fengmian,
+                elsething
+                ,a_id
+        from AbnormalGestation
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="early_num != null">
+                and early_num = #{early_num}
+            </if>
+            <if test="rengong_num != null">
+                and rengong_num = #{rengong_num}
+            </if>
+            <if test="gongwaiyuan_num != null">
+                and gongwaiyuan_num = #{gongwaiyuan_num}
+            </if>
+            <if test="zhongqi_num != null">
+                and zhongqi_num = #{zhongqi_num}
+            </if>
+            <if test="yingchang_num != null">
+                and yingchang_num = #{yingchang_num}
+            </if>
+            <if test="taieryichang != null">
+                and taieryichang = #{taieryichang}
+            </if>
+            <if test="wanqiliuchang_num != null">
+                and wanqiliuchang_num = #{wanqiliuchang_num}
+            </if>
+            <if test="fengmian != null">
+                and fengmian = #{fengmian}
+            </if>
+            <if test="elsething != null">
+                and elsething = #{elsething}
+            </if>
+            <if test="a_id != null">
+                and a_id = #{a_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateAbnormalGestation" parameterType="com.njupt.po.AbnormalGestation">
+        UPDATE AbnormalGestation
+        <trim prefix="set" suffix="where a_id = #{a_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="early_num != null">
+                , early_num = #{early_num}
+            </if>
+            <if test="rengong_num != null">
+                , rengong_num = #{rengong_num}
+            </if>
+            <if test="gongwaiyuan_num != null">
+                , gongwaiyuan_num = #{gongwaiyuan_num}
+            </if>
+            <if test="zhongqi_num != null">
+                , zhongqi_num = #{zhongqi_num}
+            </if>
+            <if test="yingchang_num != null">
+                , yingchang_num = #{yingchang_num}
+            </if>
+            <if test="taieryichang != null">
+                , taieryichang = #{taieryichang}
+            </if>
+            <if test="wanqiliuchang_num != null">
+                , wanqiliuchang_num = #{wanqiliuchang_num}
+            </if>
+            <if test="fengmian != null">
+                , fengmian = #{fengmian}
+            </if>
+            <if test="elsething != null">
+                , elsething = #{elsething}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteAbnormalGestation" parameterType="com.njupt.po.AbnormalGestation">
+        delete from AbnormalGestation WHERE a_id = #{a_id}
+    </delete>
+
+ </mapper>

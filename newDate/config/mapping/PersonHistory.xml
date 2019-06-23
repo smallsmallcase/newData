@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.PersonHistory">
+    <insert id="savePersonHistory" useGeneratedKeys="true" keyProperty="person_id" parameterType="com.njupt.po.PersonHistory">
+        insert into PersonHistory(
+                basic_id,
+                smokehistory,
+                drinkhistory,
+                touchhistory,
+                zhiyouhistory,
+                else_like
+                        
+        ) values(
+              #{basic_id},
+              #{smokehistory},
+              #{drinkhistory},
+              #{touchhistory},
+              #{zhiyouhistory},
+              #{else_like}
+              )
+    </insert>
+
+<select id="queryPersonHistory" parameterType="com.njupt.po.PersonHistory" resultType="com.njupt.po.PersonHistory">
+        SELECT basic_id,
+                smokehistory,
+                drinkhistory,
+                touchhistory,
+                zhiyouhistory,
+                else_like
+                ,person_id
+        from PersonHistory
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="smokehistory != null">
+                and smokehistory = #{smokehistory}
+            </if>
+            <if test="drinkhistory != null">
+                and drinkhistory = #{drinkhistory}
+            </if>
+            <if test="touchhistory != null">
+                and touchhistory = #{touchhistory}
+            </if>
+            <if test="zhiyouhistory != null">
+                and zhiyouhistory = #{zhiyouhistory}
+            </if>
+            <if test="else_like != null">
+                and else_like = #{else_like}
+            </if>
+            <if test="person_id != null">
+                and person_id = #{person_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updatePersonHistory" parameterType="com.njupt.po.PersonHistory">
+        UPDATE PersonHistory
+        <trim prefix="set" suffix="where person_id = #{person_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="smokehistory != null">
+                , smokehistory = #{smokehistory}
+            </if>
+            <if test="drinkhistory != null">
+                , drinkhistory = #{drinkhistory}
+            </if>
+            <if test="touchhistory != null">
+                , touchhistory = #{touchhistory}
+            </if>
+            <if test="zhiyouhistory != null">
+                , zhiyouhistory = #{zhiyouhistory}
+            </if>
+            <if test="else_like != null">
+                , else_like = #{else_like}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deletePersonHistory" parameterType="com.njupt.po.PersonHistory">
+        delete from PersonHistory WHERE person_id = #{person_id}
+    </delete>
+
+ </mapper>

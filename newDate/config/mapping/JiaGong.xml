@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.JiaGong">
+    <insert id="saveJiaGong" useGeneratedKeys="true" keyProperty="jg_id" parameterType="com.njupt.po.JiaGong">
+        insert into JiaGong(
+                basic_id,
+                j_time,
+                t4,
+                t3,
+                tsh,
+                yl_t3,
+                yl_t4
+                        
+        ) values(
+              #{basic_id},
+              #{j_time},
+              #{t4},
+              #{t3},
+              #{tsh},
+              #{yl_t3},
+              #{yl_t4}
+              )
+    </insert>
+
+<select id="queryJiaGong" parameterType="com.njupt.po.JiaGong" resultType="com.njupt.po.JiaGong">
+        SELECT basic_id,
+                j_time,
+                t4,
+                t3,
+                tsh,
+                yl_t3,
+                yl_t4
+                ,jg_id
+        from JiaGong
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="j_time != null">
+                and j_time = #{j_time}
+            </if>
+            <if test="t4 != null">
+                and t4 = #{t4}
+            </if>
+            <if test="t3 != null">
+                and t3 = #{t3}
+            </if>
+            <if test="tsh != null">
+                and tsh = #{tsh}
+            </if>
+            <if test="yl_t3 != null">
+                and yl_t3 = #{yl_t3}
+            </if>
+            <if test="yl_t4 != null">
+                and yl_t4 = #{yl_t4}
+            </if>
+            <if test="jg_id != null">
+                and jg_id = #{jg_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateJiaGong" parameterType="com.njupt.po.JiaGong">
+        UPDATE JiaGong
+        <trim prefix="set" suffix="where jg_id = #{jg_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="j_time != null">
+                , j_time = #{j_time}
+            </if>
+            <if test="t4 != null">
+                , t4 = #{t4}
+            </if>
+            <if test="t3 != null">
+                , t3 = #{t3}
+            </if>
+            <if test="tsh != null">
+                , tsh = #{tsh}
+            </if>
+            <if test="yl_t3 != null">
+                , yl_t3 = #{yl_t3}
+            </if>
+            <if test="yl_t4 != null">
+                , yl_t4 = #{yl_t4}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteJiaGong" parameterType="com.njupt.po.JiaGong">
+        delete from JiaGong WHERE jg_id = #{jg_id}
+    </delete>
+
+ </mapper>

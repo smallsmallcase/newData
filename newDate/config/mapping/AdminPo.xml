@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.AdminPo">
+   <!-- <insert id="saveTask" useGeneratedKeys="true" keyProperty="task_id" parameterType="com.njupt.po.Task">
+        insert into Task(
+                user_id,
+                basic_id,
+                page_num,
+                finish
+                        
+        ) values(
+              #{user_id},
+              #{basic_id},
+              #{page_num},
+              #{finish}
+              )
+    </insert>
+
+<select id="queryTask" parameterType="com.njupt.po.Task" resultType="com.njupt.po.Task">
+        SELECT user_id,
+                basic_id,
+                page_num,
+                finish
+                ,task_id
+        from Task
+        <trim prefix="where" prefixOverrides="and">
+            <if test="user_id != null">
+                and user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="page_num != null">
+                and page_num = #{page_num}
+            </if>
+            <if test="finish != null">
+                and finish = #{finish}
+            </if>
+            <if test="task_id != null">
+                and task_id = #{task_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateTask" parameterType="com.njupt.po.Task">
+        UPDATE Task
+        <trim prefix="set" suffix="where task_id = #{task_id}"  prefixOverrides=",">
+            <if test="user_id != null">
+                , user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="page_num != null">
+                , page_num = #{page_num}
+            </if>
+            <if test="finish != null">
+                , finish = #{finish}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteTask" parameterType="com.njupt.po.Task">
+        delete from Task WHERE task_id = #{task_id}
+    </delete>-->
+
+<select id="queryByPageForAdmin" parameterType="map" resultType="com.njupt.po.AdminPo">
+    SELECT u.user_id,u.user_name,
+    b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
+    from Task t,User u,BasicInformation b WHERE
+    <trim suffix="and" prefixOverrides="and">
+        <if test="user_id != null">
+            and t.user_id = #{user_id}
+        </if>
+        <if test="basic_id != null">
+            and t.basic_id = #{basic_id}
+        </if>
+        <if test="finish != null">
+            and t.finish = #{finish}
+        </if>
+        <if test="task_id != null">
+            and t.task_id = #{task_id}
+        </if>
+
+
+        <if test="user_name != null">
+            and u.user_name = #{user_name}
+        </if>
+
+        <if test="personname != null">
+            and b.personname = #{personname}
+        </if>
+        <if test="ad_number != null">
+            and b.ad_number = #{ad_number}
+        </if>
+
+    </trim>
+
+
+
+
+    u.user_id = t.user_id
+    and b.basic_id = t.basic_id
+
+    limit #{start},#{pageSize}
+</select>
+
+    <select id="queryByPageTotalForAdmin" parameterType="map" resultType="int">
+        SELECT count(1)
+        from Task t,User u,BasicInformation b WHERE
+        <trim  prefixOverrides="and" suffix="and">
+            <if test="user_id != null ">
+                and t.user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                and t.basic_id = #{basic_id}
+            </if>
+            <if test="finish != null">
+                and t.finish = #{finish}
+            </if>
+            <if test="task_id != null">
+                and t.task_id = #{task_id}
+            </if>
+
+
+            <if test="user_name != null ">
+                and u.user_name = #{user_name}
+            </if>
+
+            <if test="personname != null ">
+                and b.personname = #{personname}
+            </if>
+            <if test="ad_number != null ">
+                and b.ad_number = #{ad_number}
+            </if>
+
+        </trim>
+         u.user_id = t.user_id
+        and b.basic_id = t.basic_id
+    </select>
+
+    <!--<select id="queryTotal" parameterType="com.njupt.po.Task" resultType="int">
+        SELECT count(task_id)
+        from Task
+        <trim prefix="where" prefixOverrides="and">
+            <if test="user_id != null">
+                and user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="page_num != null">
+                and page_num = #{page_num}
+            </if>
+            <if test="finish != null">
+                and finish = #{finish}
+            </if>
+            <if test="task_id != null">
+                and task_id = #{task_id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryTotalForUser" resultType="map">
+        SELECT user_id,count(user_id) from Task where finish = 1 GROUP BY user_id;
+    </select>-->
+
+
+    <select id="queryByPageForDiabetes" parameterType="map" resultType="com.njupt.po.AdminPo">
+        SELECT u.user_id,u.user_name,
+        b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
+        from Task t,User u,BasicInformation b ,ElseDiscrible e WHERE
+        <trim suffix="and" prefixOverrides="and">
+            <if test="user_id != null">
+                and t.user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                and t.basic_id = #{basic_id}
+            </if>
+            <if test="finish != null">
+                and t.finish = #{finish}
+            </if>
+            <if test="task_id != null">
+                and t.task_id = #{task_id}
+            </if>
+
+
+            <if test="user_name != null">
+                and u.user_name = #{user_name}
+            </if>
+
+            <if test="personname != null">
+                and b.personname = #{personname}
+            </if>
+            <if test="ad_number != null">
+                and b.ad_number = #{ad_number}
+            </if>
+        </trim>
+        u.user_id = t.user_id
+        and b.basic_id = t.basic_id
+        and b.basic_id = e.basic_id
+
+        and (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
+
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="queryByPageForHypertension" parameterType="map" resultType="com.njupt.po.AdminPo">
+        SELECT u.user_id,u.user_name,
+        b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
+        from Task t,User u,BasicInformation b ,ElseDiscrible e WHERE
+        <trim suffix="and" prefixOverrides="and">
+            <if test="user_id != null">
+                and t.user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                and t.basic_id = #{basic_id}
+            </if>
+            <if test="finish != null">
+                and t.finish = #{finish}
+            </if>
+            <if test="task_id != null">
+                and t.task_id = #{task_id}
+            </if>
+
+
+            <if test="user_name != null">
+                and u.user_name = #{user_name}
+            </if>
+
+            <if test="personname != null">
+                and b.personname = #{personname}
+            </if>
+            <if test="ad_number != null">
+                and b.ad_number = #{ad_number}
+            </if>
+        </trim>
+        u.user_id = t.user_id
+        and b.basic_id = t.basic_id
+        and b.basic_id = e.basic_id
+
+        and AD like '%妊娠期高血压%'
+
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="queryByPageForBoth" parameterType="map" resultType="com.njupt.po.AdminPo">
+        SELECT u.user_id,u.user_name,
+        b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
+        from Task t,User u,BasicInformation b ,ElseDiscrible e WHERE
+        <trim suffix="and" prefixOverrides="and">
+            <if test="user_id != null">
+                and t.user_id = #{user_id}
+            </if>
+            <if test="basic_id != null">
+                and t.basic_id = #{basic_id}
+            </if>
+            <if test="finish != null">
+                and t.finish = #{finish}
+            </if>
+            <if test="task_id != null">
+                and t.task_id = #{task_id}
+            </if>
+
+
+            <if test="user_name != null">
+                and u.user_name = #{user_name}
+            </if>
+
+            <if test="personname != null">
+                and b.personname = #{personname}
+            </if>
+            <if test="ad_number != null">
+                and b.ad_number = #{ad_number}
+            </if>
+        </trim>
+        u.user_id = t.user_id
+        and b.basic_id = t.basic_id
+        and b.basic_id = e.basic_id
+
+        and AD like '%妊娠期高血压%'
+        and (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
+
+        limit #{start},#{pageSize}
+    </select>
+ </mapper>

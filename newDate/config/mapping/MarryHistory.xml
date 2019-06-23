@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.MarryHistory">
+    <insert id="saveMarryHistory" useGeneratedKeys="true" keyProperty="marry_id" parameterType="com.njupt.po.MarryHistory">
+        insert into MarryHistory(
+                basic_id,
+                is_marry,
+                marryage,
+                againmarryage,
+                husbandname,
+                husbandage,
+                husband_work,
+                husband_education,
+                husbandhealthy
+                        
+        ) values(
+              #{basic_id},
+              #{is_marry},
+              #{marryage},
+              #{againmarryage},
+              #{husbandname},
+              #{husbandage},
+              #{husband_work},
+              #{husband_education},
+              #{husbandhealthy}
+              )
+    </insert>
+
+<select id="queryMarryHistory" parameterType="com.njupt.po.MarryHistory" resultType="com.njupt.po.MarryHistory">
+        SELECT basic_id,
+                is_marry,
+                marryage,
+                againmarryage,
+                husbandname,
+                husbandage,
+                husband_work,
+                husband_education,
+                husbandhealthy
+                ,marry_id
+        from MarryHistory
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="is_marry != null">
+                and is_marry = #{is_marry}
+            </if>
+            <if test="marryage != null">
+                and marryage = #{marryage}
+            </if>
+            <if test="againmarryage != null">
+                and againmarryage = #{againmarryage}
+            </if>
+            <if test="husbandname != null">
+                and husbandname = #{husbandname}
+            </if>
+            <if test="husbandage != null">
+                and husbandage = #{husbandage}
+            </if>
+            <if test="husband_work != null">
+                and husband_work = #{husband_work}
+            </if>
+            <if test="husband_education != null">
+                and husband_education = #{husband_education}
+            </if>
+            <if test="husbandhealthy != null">
+                and husbandhealthy = #{husbandhealthy}
+            </if>
+            <if test="marry_id != null">
+                and marry_id = #{marry_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateMarryHistory" parameterType="com.njupt.po.MarryHistory">
+        UPDATE MarryHistory
+        <trim prefix="set" suffix="where marry_id = #{marry_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+               ,basic_id = #{basic_id}
+            </if>
+            <if test="is_marry != null">
+               ,is_marry = #{is_marry}
+            </if>
+            <if test="marryage != null">
+               ,marryage = #{marryage}
+            </if>
+            <if test="againmarryage != null">
+               ,againmarryage = #{againmarryage}
+            </if>
+            <if test="husbandname != null">
+               ,husbandname = #{husbandname}
+            </if>
+            <if test="husbandage != null">
+               ,husbandage = #{husbandage}
+            </if>
+            <if test="husband_work != null">
+               ,husband_work = #{husband_work}
+            </if>
+            <if test="husband_education != null">
+               ,husband_education = #{husband_education}
+            </if>
+            <if test="husbandhealthy != null">
+               ,husbandhealthy = #{husbandhealthy}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteMarryHistory" parameterType="com.njupt.po.MarryHistory">
+        delete from MarryHistory WHERE marry_id = #{marry_id}
+    </delete>
+
+ </mapper>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.RoutIneurineTest">
+    <insert id="saveRoutIneurineTest" useGeneratedKeys="true" keyProperty="rt_id" parameterType="com.njupt.po.RoutIneurineTest">
+        insert into RoutIneurineTest(
+                basic_id,
+                uro,
+                bil,
+                ket,
+                blo,
+                pro,
+                nitrite,
+                wbc,
+                putaotang,
+                proportion,
+                ph,
+                vc,
+                smallaf,
+                rbc_h,
+                rbc,
+                rbc_message,
+                wbc_high,
+                wbc_,
+                epithelium_high,
+                epithelium,
+                guanxing_low,
+                b_guanxing,
+                guanxing,
+                ylf,
+                small_cell,
+                germ,
+                conduct,
+                vs,
+                crystal,
+                r_time
+                        
+        ) values(
+              #{basic_id},
+              #{uro},
+              #{bil},
+              #{ket},
+              #{blo},
+              #{pro},
+              #{nitrite},
+              #{wbc},
+              #{putaotang},
+              #{proportion},
+              #{ph},
+              #{vc},
+              #{smallaf},
+              #{rbc_h},
+              #{rbc},
+              #{rbc_message},
+              #{wbc_high},
+              #{wbc_},
+              #{epithelium_high},
+              #{epithelium},
+              #{guanxing_low},
+              #{b_guanxing},
+              #{guanxing},
+              #{ylf},
+              #{small_cell},
+              #{germ},
+              #{conduct},
+              #{vs},
+              #{crystal},
+              #{r_time}
+              )
+    </insert>
+
+<select id="queryRoutIneurineTest" parameterType="com.njupt.po.RoutIneurineTest" resultType="com.njupt.po.RoutIneurineTest">
+        SELECT basic_id,
+                uro,
+                bil,
+                ket,
+                blo,
+                pro,
+                nitrite,
+                wbc,
+                putaotang,
+                proportion,
+                ph,
+                vc,
+                smallaf,
+                rbc_h,
+                rbc,
+                rbc_message,
+                wbc_high,
+                wbc_,
+                epithelium_high,
+                epithelium,
+                guanxing_low,
+                b_guanxing,
+                guanxing,
+                ylf,
+                small_cell,
+                germ,
+                conduct,
+                vs,
+                crystal,
+                r_time
+                ,rt_id
+        from RoutIneurineTest
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="uro != null">
+                and uro = #{uro}
+            </if>
+            <if test="bil != null">
+                and bil = #{bil}
+            </if>
+            <if test="ket != null">
+                and ket = #{ket}
+            </if>
+            <if test="blo != null">
+                and blo = #{blo}
+            </if>
+            <if test="pro != null">
+                and pro = #{pro}
+            </if>
+            <if test="nitrite != null">
+                and nitrite = #{nitrite}
+            </if>
+            <if test="wbc != null">
+                and wbc = #{wbc}
+            </if>
+            <if test="putaotang != null">
+                and putaotang = #{putaotang}
+            </if>
+            <if test="proportion != null">
+                and proportion = #{proportion}
+            </if>
+            <if test="ph != null">
+                and ph = #{ph}
+            </if>
+            <if test="vc != null">
+                and vc = #{vc}
+            </if>
+            <if test="smallaf != null">
+                and smallaf = #{smallaf}
+            </if>
+            <if test="rbc_h != null">
+                and rbc_h = #{rbc_h}
+            </if>
+            <if test="rbc != null">
+                and rbc = #{rbc}
+            </if>
+            <if test="rbc_message != null">
+                and rbc_message = #{rbc_message}
+            </if>
+            <if test="wbc_high != null">
+                and wbc_high = #{wbc_high}
+            </if>
+            <if test="wbc_ != null">
+                and wbc_ = #{wbc_}
+            </if>
+            <if test="epithelium_high != null">
+                and epithelium_high = #{epithelium_high}
+            </if>
+            <if test="epithelium != null">
+                and epithelium = #{epithelium}
+            </if>
+            <if test="guanxing_low != null">
+                and guanxing_low = #{guanxing_low}
+            </if>
+            <if test="b_guanxing != null">
+                and b_guanxing = #{b_guanxing}
+            </if>
+            <if test="guanxing != null">
+                and guanxing = #{guanxing}
+            </if>
+            <if test="ylf != null">
+                and ylf = #{ylf}
+            </if>
+            <if test="small_cell != null">
+                and small_cell = #{small_cell}
+            </if>
+            <if test="germ != null">
+                and germ = #{germ}
+            </if>
+            <if test="conduct != null">
+                and conduct = #{conduct}
+            </if>
+            <if test="vs != null">
+                and vs = #{vs}
+            </if>
+            <if test="crystal != null">
+                and crystal = #{crystal}
+            </if>
+            <if test="r_time != null">
+                and r_time = #{r_time}
+            </if>
+            <if test="rt_id != null">
+                and rt_id = #{rt_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateRoutIneurineTest" parameterType="com.njupt.po.RoutIneurineTest">
+        UPDATE RoutIneurineTest
+        <trim prefix="set" suffix="where rt_id = #{rt_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="uro != null">
+                , uro = #{uro}
+            </if>
+            <if test="bil != null">
+                , bil = #{bil}
+            </if>
+            <if test="ket != null">
+                , ket = #{ket}
+            </if>
+            <if test="blo != null">
+                , blo = #{blo}
+            </if>
+            <if test="pro != null">
+                , pro = #{pro}
+            </if>
+            <if test="nitrite != null">
+                , nitrite = #{nitrite}
+            </if>
+            <if test="wbc != null">
+                , wbc = #{wbc}
+            </if>
+            <if test="putaotang != null">
+                , putaotang = #{putaotang}
+            </if>
+            <if test="proportion != null">
+                , proportion = #{proportion}
+            </if>
+            <if test="ph != null">
+                , ph = #{ph}
+            </if>
+            <if test="vc != null">
+                , vc = #{vc}
+            </if>
+            <if test="smallaf != null">
+                , smallaf = #{smallaf}
+            </if>
+            <if test="rbc_h != null">
+                , rbc_h = #{rbc_h}
+            </if>
+            <if test="rbc != null">
+                , rbc = #{rbc}
+            </if>
+            <if test="rbc_message != null">
+                , rbc_message = #{rbc_message}
+            </if>
+            <if test="wbc_high != null">
+                , wbc_high = #{wbc_high}
+            </if>
+            <if test="wbc_ != null">
+                , wbc_ = #{wbc_}
+            </if>
+            <if test="epithelium_high != null">
+                , epithelium_high = #{epithelium_high}
+            </if>
+            <if test="epithelium != null">
+                , epithelium = #{epithelium}
+            </if>
+            <if test="guanxing_low != null">
+                , guanxing_low = #{guanxing_low}
+            </if>
+            <if test="b_guanxing != null">
+                , b_guanxing = #{b_guanxing}
+            </if>
+            <if test="guanxing != null">
+                , guanxing = #{guanxing}
+            </if>
+            <if test="ylf != null">
+                , ylf = #{ylf}
+            </if>
+            <if test="small_cell != null">
+                , small_cell = #{small_cell}
+            </if>
+            <if test="germ != null">
+                , germ = #{germ}
+            </if>
+            <if test="conduct != null">
+                , conduct = #{conduct}
+            </if>
+            <if test="vs != null">
+                , vs = #{vs}
+            </if>
+            <if test="crystal != null">
+                , crystal = #{crystal}
+            </if>
+            <if test="r_time != null">
+                , r_time = #{r_time}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteRoutIneurineTest" parameterType="com.njupt.po.RoutIneurineTest">
+        delete from RoutIneurineTest WHERE rt_id = #{rt_id}
+    </delete>
+
+ </mapper>

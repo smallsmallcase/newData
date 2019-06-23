@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<style>
+    .input_no_border{
+        width: 60%!important;
+        margin: 0 auto;
+        text-align: center;
+        border-radius:0!important;
+      /*  color: rgb(104, 113, 119)!important;*/
+        background-color: rgba(0,0,0,0)!important;
+        box-shadow: none!important;
+        border: none!important;
+        border-bottom: 1px groove #fea!important;
+        color: #ffc610!important;
+
+
+    }
+    .font-info{
+        font-size: 20px!important;
+        font-weight: 100!important;
+        font-family: -webkit-body;
+    }
+
+    #web_bg{
+        position:fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        min-width: 1000px;
+        z-index:-10;
+        zoom: 1;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-size: auto;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-position: center center;
+    }
+    .banner{
+        position: fixed;
+        top: 0;bottom: 0;left: 0;right: 0;
+        margin: auto;
+        width: 300px;
+        height: 120px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 100;
+        font-family: STKaiti;
+        overflow: visible;
+
+    }
+    .banner a{
+        text-decoration: none!important;
+    }
+    .banner a div:hover{
+        background-color: rgba(200,180,160,0.2)!important;
+    }
+    .bg{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(255,255,255,0.1);
+        z-index: -9;
+    }
+    .modal-bg{
+        background-color:rgba(200, 180, 160,0.2)!important;
+    }
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px rgb(200,180,160) inset !important;
+    }
+</style>
+<body>
+<div class="banner">
+    <div style="margin-bottom: 30px;margin-top: -100px;color: white">欢迎访问数据录入系统</div>
+    <a href="javascript:$('#signUpModal').modal('show');"  data-target="#signUpModal"><div style="color: rgb(200,200,200)!important;">还没有账号，请注册</div></a>
+    <a href="javascript:$('#loginModal').modal('show');" data-target="#loginModal"><div style="color: rgb(200,200,200)!important;">已有账号，请登录</div></a>
+</div>
+<div style="font-family:Microsoft YaHei;position: fixed;bottom: 10px;left: 0" ><img src="/picture/time.svg" width="30px"><span id="currentTime"></span></div>
+<div class="bg"></div>
+<!--<div class="text-right">
+    <button type="button" style="border-radius: 0 ;width:10%" class="btn btn-default" data-toggle="modal" data-target="#signUpModal" >sign up</button>
+    <button type="button" style="border-radius: 0 ;width:10%" class="btn btn-default" data-toggle="modal" data-target="#loginModal">login</button>
+</div>-->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-bg">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="text-center"><img width="10%" style="padding: 5% 0" src="/picture/sign_in.svg"></div>
+            </div>
+            <div class="modal-body">
+                <form id="form" action="/register.form" autocomplete="off">
+                    <div class="form-group" style="padding-bottom: 5%;padding-top: 5%">
+                        <input type="text" name="user_name" placeholder="user name" class="input_no_border font-info form-control " id="user_name">
+                    </div>
+                    <div class="form-group" style="padding-bottom: 5%">
+                        <input type="password" name="password"  class="form-control input_no_border font-info "  placeholder="password" id="password">
+                    </div>
+                </form>
+                <div class="text-center" style="position: absolute;bottom: 0;left: 0;right: 0;color: #c40c0c"><span id="msg" style="display: none;">用户名或密码错误</span></div>
+                <div>
+            </div>
+
+
+            </div>
+            <div class="modal-footer " style="text-align: center">
+                <button id="login" type="button" class="btn btn-default font-info" style="border-radius:0;color: #707070;width: 20%;outline: none;" >login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-bg">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="text-center"><img width="10%" style="padding: 5% 0" src="/picture/sign_up.svg"></div>
+            </div>
+            <div class="modal-body">
+                <form id="formSignUp" action="/register.form" autocomplete="off">
+                    <div class="form-group" style="padding-bottom: 5%;padding-top: 5%;position: relative">
+                        <input type="text" name="user_name" placeholder="user name" class="input_no_border font-info form-control " id="user_name">
+                        <div class="text-center" style="position: absolute;bottom: 0;left: 0;right: 0;color: #c40c0c">
+                        <span style="display: none">用户名不能为空</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-bottom: 5%;position: relative">
+                        <input type="password" name="password"  class="form-control input_no_border font-info "  placeholder="password" id="password">
+                        <div class="text-center" style="position: absolute;bottom: 0;left: 0;right: 0;color: #c40c0c">
+                            <span style="display: none">密码不能为空</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-bottom: 5%;position: relative">
+                        <input id="re-password" name="re-password" class="form-control input_no_border font-info "  placeholder="repeat password" type="password">
+                        <div class="text-center" style="position: absolute;bottom: 0;left: 0;right: 0;color: #c40c0c">
+                            <span style="display: none">两次密码输入不同</span>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center" style="position: absolute;bottom: 0;left: 0;right: 0;color: #c40c0c">
+                    <span id="exist" style="display: none">用户名已存在</span>
+                </div>
+            </div>
+            <div class="modal-footer " style="text-align: center">
+                <button id="btn" type="button" class="btn btn-default font-info" style="border-radius:0;color: #707070;width: 20%;outline: none;" >sign up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="continueUnfinishOrNew" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-bg">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">还有未完成的任务，是否继续上次任务?</h4>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary font-info" style="border-radius: 0" data-toggle="modal" data-target="#continueUnfinishOrNew">是</button>
+                <button type="button" class="btn btn-primary font-info" style="border-radius: 0" onclick="window.location.href = '/loadNew.form';">否</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="wrapper">
+    <!--背景图片-->
+    <div id="web_bg" style="background-image: url(/picture/background.jpg);"></div>
+    <!--其他代码 ... -->
+</div>
+
+</body>
+<link rel="stylesheet" href="/css/bootscss.css">
+<script src="/js/jquery-3.2.1.js">
+</script>
+<script src="/js/bootstrap.js"></script>
+<script>
+
+    $(function () {
+        $("#loginModal").find("#login").click(login);
+        $("#loginModal").find("#user_name").focusin(function () {
+            $("#loginModal").find("#msg").hide();
+        });
+        $("#loginModal").find("#password").focusin(function () {
+            $("#loginModal").find("#msg").hide();
+        });
+
+
+        $("#signUpModal").find("#btn").click(function(){
+            $("#exist").hide();
+            var formMeta = $("#signUpModal").find("#formSignUp");
+            var array = formMeta.serializeArray();
+            var spans = formMeta.find("span");
+            var mark = true;
+            if (array[0].value == ""){
+                $(spans[0]).show();
+                mark = false;
+            }
+            if (array[1].value == ""){
+                $(spans[1]).show();
+                mark = false;
+            }
+            if (array[1].value != array[2].value){
+                $(spans[2]).show();
+                mark = false;
+            }
+            if (mark){
+                $.post("/register.form",array,function(val){
+                    if (val == "success"){
+                        $('#signUpModal').modal('hide');
+                        $('#loginModal').modal('show');
+                    }else{
+                        $("#exist").show();
+                        $("#signUpModal ").find("#password").val("");
+                        $("#signUpModal ").find("#re-password").val("");
+                    }
+                });
+            }
+        });
+
+        $("#signUpModal ").find("#user_name").focusin(function(){
+            $($("#signUpModal").find("#formSignUp").find("span")[0]).hide();
+            $("#exist").hide();
+        });
+        $("#signUpModal").find("#password").focusin(function(){
+            $($("#signUpModal").find("#formSignUp").find("span")[1]).hide();
+            $("#exist").hide();
+        });
+        $("#signUpModal").find("#re-password").focusin(function(){
+            $($("#signUpModal").find("#formSignUp").find("span")[2]).hide();
+            $("#exist").hide();
+        });
+
+        viewTime();
+
+
+        $('#loginModal').on('hide.bs.modal', function (event) {
+            $(".banner").show();
+        });
+        $('#loginModal').on('show.bs.modal', function (event) {
+            $(".banner").hide();
+        });
+
+        $('#signUpModal').on('hide.bs.modal', function (event) {
+            $(".banner").show();
+        });
+        $('#signUpModal').on('show.bs.modal', function (event) {
+            $(".banner").hide();
+        });
+        $('#continueUnfinishOrNew').on('hide.bs.modal',function(event){
+           window.location.href="/loadTask.form";
+        });
+        $('#continueUnfinishOrNew').on('show.bs.modal',function(event){
+            $(".banner").hide();
+        });
+
+    });
+
+    function login() {
+        var data = $("#loginModal").find("#form").serializeArray();
+        $.post("/login.form",data,function(val) {
+            if (val === 'success'){
+                $.post("/checkTask.form",{},function(data){
+                    if ("haveUnfinishedTask" == data){
+                        $('#loginModal').modal('hide');
+                        $('#continueUnfinishOrNew').modal('show');
+                    }else{
+                        window.location.href=data;
+                    }
+                });
+                /*相对路径*/
+                /*window.location.href="/checkTask.form";*/
+               /* /!*直接替换地址栏*!/
+                window.location.replace("")*/
+            }else if(val == 'admin'){
+                window.location.href="/loginForAdmin.form";
+            }else{
+                console.log(val);
+                $("#loginModal").find("#msg").show();
+            }
+        });
+    }
+    function viewTime(){
+        var date = new Date();
+        var yyyy = date.getFullYear();
+        var MM = check(date.getMonth()+1);
+        var dd = check(date.getDate());
+        var hh = check(date.getHours());
+        var mm = check(date.getMinutes());
+        var ss = check(date.getSeconds());
+        var day =checkDay(date.getDay());
+        var formate = yyyy+"-"+MM+"-"+dd+" "+hh+":"+mm+":"+ss+" "+day;
+        $("#currentTime").text(formate);
+        setTimeout('viewTime()',1000);
+
+        function check(data) {
+            if(data<10){
+                data = "0"+data;
+            }
+            return data;
+        }
+        function checkDay(day) {
+            switch (day){
+                case 1:return "星期一";
+                case 2:return "星期二";
+                case 3:return "星期三";
+                case 4:return "星期四";
+                case 5:return "星期五";
+                case 6:return "星期六";
+                case 0:return "星期日";
+            }
+        }
+    }
+
+
+</script>
+</html>

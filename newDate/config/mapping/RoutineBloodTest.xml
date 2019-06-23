@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njupt.RoutineBloodTest">
+    <insert id="saveRoutineBloodTest" useGeneratedKeys="true" keyProperty="rbt_id" parameterType="com.njupt.po.RoutineBloodTest">
+        insert into RoutineBloodTest(
+                basic_id,
+                wbc_number,
+                rbc_number,
+                hb_number,
+                plt_number,
+                neut_rate,
+                ly_rate,
+                mono_rate,
+                egr_rate,
+                bgr_rate,
+                neut_number,
+                ly_number,
+                mono_number,
+                egr_number,
+                bgr_number,
+                mcv,
+                hct,
+                mch,
+                mchc,
+                rdw_cv,
+                rdw_sd,
+                mpv,
+                pct,
+                pdw,
+                plcr,
+                r_time
+                        
+        ) values(
+              #{basic_id},
+              #{wbc_number},
+              #{rbc_number},
+              #{hb_number},
+              #{plt_number},
+              #{neut_rate},
+              #{ly_rate},
+              #{mono_rate},
+              #{egr_rate},
+              #{bgr_rate},
+              #{neut_number},
+              #{ly_number},
+              #{mono_number},
+              #{egr_number},
+              #{bgr_number},
+              #{mcv},
+              #{hct},
+              #{mch},
+              #{mchc},
+              #{rdw_cv},
+              #{rdw_sd},
+              #{mpv},
+              #{pct},
+              #{pdw},
+              #{plcr},
+              #{r_time}
+              )
+    </insert>
+
+<select id="queryRoutineBloodTest" parameterType="com.njupt.po.RoutineBloodTest" resultType="com.njupt.po.RoutineBloodTest">
+        SELECT basic_id,
+                wbc_number,
+                rbc_number,
+                hb_number,
+                plt_number,
+                neut_rate,
+                ly_rate,
+                mono_rate,
+                egr_rate,
+                bgr_rate,
+                neut_number,
+                ly_number,
+                mono_number,
+                egr_number,
+                bgr_number,
+                mcv,
+                hct,
+                mch,
+                mchc,
+                rdw_cv,
+                rdw_sd,
+                mpv,
+                pct,
+                pdw,
+                plcr,
+                r_time
+                ,rbt_id
+        from RoutineBloodTest
+        <trim prefix="where" prefixOverrides="and">
+            <if test="basic_id != null">
+                and basic_id = #{basic_id}
+            </if>
+            <if test="wbc_number != null">
+                and wbc_number = #{wbc_number}
+            </if>
+            <if test="rbc_number != null">
+                and rbc_number = #{rbc_number}
+            </if>
+            <if test="hb_number != null">
+                and hb_number = #{hb_number}
+            </if>
+            <if test="plt_number != null">
+                and plt_number = #{plt_number}
+            </if>
+            <if test="neut_rate != null">
+                and neut_rate = #{neut_rate}
+            </if>
+            <if test="ly_rate != null">
+                and ly_rate = #{ly_rate}
+            </if>
+            <if test="mono_rate != null">
+                and mono_rate = #{mono_rate}
+            </if>
+            <if test="egr_rate != null">
+                and egr_rate = #{egr_rate}
+            </if>
+            <if test="bgr_rate != null">
+                and bgr_rate = #{bgr_rate}
+            </if>
+            <if test="neut_number != null">
+                and neut_number = #{neut_number}
+            </if>
+            <if test="ly_number != null">
+                and ly_number = #{ly_number}
+            </if>
+            <if test="mono_number != null">
+                and mono_number = #{mono_number}
+            </if>
+            <if test="egr_number != null">
+                and egr_number = #{egr_number}
+            </if>
+            <if test="bgr_number != null">
+                and bgr_number = #{bgr_number}
+            </if>
+            <if test="mcv != null">
+                and mcv = #{mcv}
+            </if>
+            <if test="hct != null">
+                and hct = #{hct}
+            </if>
+            <if test="mch != null">
+                and mch = #{mch}
+            </if>
+            <if test="mchc != null">
+                and mchc = #{mchc}
+            </if>
+            <if test="rdw_cv != null">
+                and rdw_cv = #{rdw_cv}
+            </if>
+            <if test="rdw_sd != null">
+                and rdw_sd = #{rdw_sd}
+            </if>
+            <if test="mpv != null">
+                and mpv = #{mpv}
+            </if>
+            <if test="pct != null">
+                and pct = #{pct}
+            </if>
+            <if test="pdw != null">
+                and pdw = #{pdw}
+            </if>
+            <if test="plcr != null">
+                and plcr = #{plcr}
+            </if>
+            <if test="r_time != null">
+                and r_time = #{r_time}
+            </if>
+            <if test="rbt_id != null">
+                and rbt_id = #{rbt_id}
+            </if>
+        </trim>
+    </select>
+
+<update id="updateRoutineBloodTest" parameterType="com.njupt.po.RoutineBloodTest">
+        UPDATE RoutineBloodTest
+        <trim prefix="set" suffix="where rbt_id = #{rbt_id}"  prefixOverrides=",">
+            <if test="basic_id != null">
+                , basic_id = #{basic_id}
+            </if>
+            <if test="wbc_number != null">
+                , wbc_number = #{wbc_number}
+            </if>
+            <if test="rbc_number != null">
+                , rbc_number = #{rbc_number}
+            </if>
+            <if test="hb_number != null">
+                , hb_number = #{hb_number}
+            </if>
+            <if test="plt_number != null">
+                , plt_number = #{plt_number}
+            </if>
+            <if test="neut_rate != null">
+                , neut_rate = #{neut_rate}
+            </if>
+            <if test="ly_rate != null">
+                , ly_rate = #{ly_rate}
+            </if>
+            <if test="mono_rate != null">
+                , mono_rate = #{mono_rate}
+            </if>
+            <if test="egr_rate != null">
+                , egr_rate = #{egr_rate}
+            </if>
+            <if test="bgr_rate != null">
+                , bgr_rate = #{bgr_rate}
+            </if>
+            <if test="neut_number != null">
+                , neut_number = #{neut_number}
+            </if>
+            <if test="ly_number != null">
+                , ly_number = #{ly_number}
+            </if>
+            <if test="mono_number != null">
+                , mono_number = #{mono_number}
+            </if>
+            <if test="egr_number != null">
+                , egr_number = #{egr_number}
+            </if>
+            <if test="bgr_number != null">
+                , bgr_number = #{bgr_number}
+            </if>
+            <if test="mcv != null">
+                , mcv = #{mcv}
+            </if>
+            <if test="hct != null">
+                , hct = #{hct}
+            </if>
+            <if test="mch != null">
+                , mch = #{mch}
+            </if>
+            <if test="mchc != null">
+                , mchc = #{mchc}
+            </if>
+            <if test="rdw_cv != null">
+                , rdw_cv = #{rdw_cv}
+            </if>
+            <if test="rdw_sd != null">
+                , rdw_sd = #{rdw_sd}
+            </if>
+            <if test="mpv != null">
+                , mpv = #{mpv}
+            </if>
+            <if test="pct != null">
+                , pct = #{pct}
+            </if>
+            <if test="pdw != null">
+                , pdw = #{pdw}
+            </if>
+            <if test="plcr != null">
+                , plcr = #{plcr}
+            </if>
+            <if test="r_time != null">
+                , r_time = #{r_time}
+            </if>
+        </trim>
+    </update>
+
+ <delete id="deleteRoutineBloodTest" parameterType="com.njupt.po.RoutineBloodTest">
+        delete from RoutineBloodTest WHERE rbt_id = #{rbt_id}
+    </delete>
+
+ </mapper>
