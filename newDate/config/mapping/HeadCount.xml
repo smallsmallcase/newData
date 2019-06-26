@@ -7,15 +7,15 @@
 
 
     <select id="queryDiabetesHC"  resultType="int">
-        SELECT count(1) from ElseDiscrible where (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
+        SELECT count(1) from elseDiscrible where (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
     </select>
 
     <select id="queryHypertensionHC"  resultType="int">
-        SELECT count(1) from ElseDiscrible where AD like '%妊娠期高血压%'
+        SELECT count(1) from elseDiscrible where AD like '%妊娠期高血压%'
     </select>
 
     <select id="queryBothHC"  resultType="int">
-        SELECT count(1) from ElseDiscrible where AD like '%妊娠期高血压%'
+        SELECT count(1) from elseDiscrible where AD like '%妊娠期高血压%'
         and (AD like '%妊娠期糖尿病%' or AD like '%GDM%')
     </select>
 

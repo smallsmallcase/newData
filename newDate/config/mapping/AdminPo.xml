@@ -69,7 +69,7 @@
 <select id="queryByPageForAdmin" parameterType="map" resultType="com.njupt.po.AdminPo">
     SELECT u.user_id,u.user_name,
     b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
-    from Task t,User u,BasicInformation b WHERE
+    from task t,user u,basicInformation b WHERE
     <trim suffix="and" prefixOverrides="and">
         <if test="user_id != null">
             and t.user_id = #{user_id}
@@ -109,7 +109,7 @@
 
     <select id="queryByPageTotalForAdmin" parameterType="map" resultType="int">
         SELECT count(1)
-        from Task t,User u,BasicInformation b WHERE
+        from task t,User u,basicInformation b WHERE
         <trim  prefixOverrides="and" suffix="and">
             <if test="user_id != null ">
                 and t.user_id = #{user_id}
@@ -171,7 +171,7 @@
     <select id="queryByPageForDiabetes" parameterType="map" resultType="com.njupt.po.AdminPo">
         SELECT u.user_id,u.user_name,
         b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
-        from Task t,User u,BasicInformation b ,ElseDiscrible e WHERE
+        from task t,user u,basicInformation b ,elseDiscrible e WHERE
         <trim suffix="and" prefixOverrides="and">
             <if test="user_id != null">
                 and t.user_id = #{user_id}
@@ -210,7 +210,7 @@
     <select id="queryByPageForHypertension" parameterType="map" resultType="com.njupt.po.AdminPo">
         SELECT u.user_id,u.user_name,
         b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
-        from Task t,User u,BasicInformation b ,ElseDiscrible e WHERE
+        from task t,user u,basicInformation b ,elseDiscrible e WHERE
         <trim suffix="and" prefixOverrides="and">
             <if test="user_id != null">
                 and t.user_id = #{user_id}
@@ -249,7 +249,7 @@
     <select id="queryByPageForBoth" parameterType="map" resultType="com.njupt.po.AdminPo">
         SELECT u.user_id,u.user_name,
         b.basic_id,b.personname,b.ad_number, t.finish,t.task_id,t.page_num
-        from Task t,User u,BasicInformation b ,ElseDiscrible e WHERE
+        from task t,user u,basicInformation b ,elseDiscrible e WHERE
         <trim suffix="and" prefixOverrides="and">
             <if test="user_id != null">
                 and t.user_id = #{user_id}

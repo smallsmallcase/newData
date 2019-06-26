@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.TodayDiseaseHistory">
     <insert id="saveTodayDiseaseHistory" useGeneratedKeys="true" keyProperty="today_id" parameterType="com.njupt.po.TodayDiseaseHistory">
-        insert into TodayDiseaseHistory(
+        insert into todayDiseaseHistory(
                 basic_id,
                 zu_chang,
                 zao_chang,
@@ -141,7 +141,7 @@
                 gongsuo,
                 taidong
                 ,today_id
-        from TodayDiseaseHistory
+        from todayDiseaseHistory
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -279,7 +279,7 @@
     </select>
 
 <update id="updateTodayDiseaseHistory" parameterType="com.njupt.po.TodayDiseaseHistory">
-        UPDATE TodayDiseaseHistory
+        UPDATE todayDiseaseHistory
         <trim prefix="set" suffix="where today_id = #{today_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -414,7 +414,7 @@
     </update>
 
  <delete id="deleteTodayDiseaseHistory" parameterType="com.njupt.po.TodayDiseaseHistory">
-        delete from TodayDiseaseHistory WHERE today_id = #{today_id}
+        delete from todayDiseaseHistory WHERE today_id = #{today_id}
     </delete>
 
  </mapper>

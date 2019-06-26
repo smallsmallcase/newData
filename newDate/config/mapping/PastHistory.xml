@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.PastHistory">
     <insert id="savePastHistory" useGeneratedKeys="true" keyProperty="pas_id" parameterType="com.njupt.po.PastHistory">
-        insert into PastHistory(
+        insert into pastHistory(
                 basic_id,
                 xfs_diseasee,
                 dianxian_disease,
@@ -33,7 +33,7 @@
                 surgicalhistory,
                 transfusion
                 ,pas_id
-        from PastHistory
+        from pastHistory
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -63,7 +63,7 @@
     </select>
 
 <update id="updatePastHistory" parameterType="com.njupt.po.PastHistory">
-        UPDATE PastHistory
+        UPDATE pastHistory
         <trim prefix="set" suffix="where pas_id = #{pas_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -90,7 +90,7 @@
     </update>
 
  <delete id="deletePastHistory" parameterType="com.njupt.po.PastHistory">
-        delete from PastHistory WHERE pas_id = #{pas_id}
+        delete from pastHistory WHERE pas_id = #{pas_id}
     </delete>
 
  </mapper>

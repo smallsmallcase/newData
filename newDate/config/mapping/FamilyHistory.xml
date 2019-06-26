@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.FamilyHistory">
     <insert id="saveFamilyHistory" useGeneratedKeys="true" keyProperty="dis_id" parameterType="com.njupt.po.FamilyHistory">
-        insert into FamilyHistory(
+        insert into familyHistory(
                 basic_id,
                 disease
                         
@@ -18,7 +18,7 @@
         SELECT basic_id,
                 disease
                 ,dis_id
-        from FamilyHistory
+        from familyHistory
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -33,7 +33,7 @@
     </select>
 
 <update id="updateFamilyHistory" parameterType="com.njupt.po.FamilyHistory">
-        UPDATE FamilyHistory
+        UPDATE familyHistory
         <trim prefix="set" suffix="where dis_id = #{dis_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -45,7 +45,7 @@
     </update>
 
  <delete id="deleteFamilyHistory" parameterType="com.njupt.po.FamilyHistory">
-        delete from FamilyHistory WHERE dis_id = #{dis_id}
+        delete from familyHistory WHERE dis_id = #{dis_id}
     </delete>
 
  </mapper>

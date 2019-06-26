@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.PersonHistory">
     <insert id="savePersonHistory" useGeneratedKeys="true" keyProperty="person_id" parameterType="com.njupt.po.PersonHistory">
-        insert into PersonHistory(
+        insert into personHistory(
                 basic_id,
                 smokehistory,
                 drinkhistory,
@@ -30,7 +30,7 @@
                 zhiyouhistory,
                 else_like
                 ,person_id
-        from PersonHistory
+        from personHistory
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -57,7 +57,7 @@
     </select>
 
 <update id="updatePersonHistory" parameterType="com.njupt.po.PersonHistory">
-        UPDATE PersonHistory
+        UPDATE personHistory
         <trim prefix="set" suffix="where person_id = #{person_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -81,7 +81,7 @@
     </update>
 
  <delete id="deletePersonHistory" parameterType="com.njupt.po.PersonHistory">
-        delete from PersonHistory WHERE person_id = #{person_id}
+        delete from personHistory WHERE person_id = #{person_id}
     </delete>
 
  </mapper>

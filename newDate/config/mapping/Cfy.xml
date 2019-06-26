@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.Cfy">
     <insert id="saveCfy" useGeneratedKeys="true" keyProperty="cf_id" parameterType="com.njupt.po.Cfy">
-        insert into Cfy(
+        insert into cfy(
                 basic_id,
                 c_fanying_danbai,
                 c_time
@@ -21,7 +21,7 @@
                 c_fanying_danbai,
                 c_time
                 ,cf_id
-        from Cfy
+        from cfy
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -39,7 +39,7 @@
     </select>
 
 <update id="updateCfy" parameterType="com.njupt.po.Cfy">
-        UPDATE Cfy
+        UPDATE cfy
         <trim prefix="set" suffix="where cf_id = #{cf_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -54,7 +54,7 @@
     </update>
 
  <delete id="deleteCfy" parameterType="com.njupt.po.Cfy">
-        delete from Cfy WHERE cf_id = #{cf_id}
+        delete from cfy WHERE cf_id = #{cf_id}
     </delete>
 
  </mapper>

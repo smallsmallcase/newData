@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.ChanKeInformation">
     <insert id="saveChanKeInformation" useGeneratedKeys="true" keyProperty="ck_id" parameterType="com.njupt.po.ChanKeInformation">
-        insert into ChanKeInformation(
+        insert into chanKeInformation(
                 basic_id,
                 gonghigh,
                 fuwei,
@@ -78,7 +78,7 @@
                 inoutlength,
                 record
                 ,ck_id
-        from ChanKeInformation
+        from chanKeInformation
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -153,7 +153,7 @@
     </select>
 
 <update id="updateChanKeInformation" parameterType="com.njupt.po.ChanKeInformation">
-        UPDATE ChanKeInformation
+        UPDATE chanKeInformation
         <trim prefix="set" suffix="where ck_id = #{ck_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -225,7 +225,7 @@
     </update>
 
  <delete id="deleteChanKeInformation" parameterType="com.njupt.po.ChanKeInformation">
-        delete from ChanKeInformation WHERE ck_id = #{ck_id}
+        delete from chanKeInformation WHERE ck_id = #{ck_id}
     </delete>
 
  </mapper>

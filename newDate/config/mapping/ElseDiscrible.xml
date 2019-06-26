@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.ElseDiscrible">
     <insert id="saveElseDiscrible" useGeneratedKeys="true" keyProperty="el_id" parameterType="com.njupt.po.ElseDiscrible">
-        insert into ElseDiscrible(
+        insert into elseDiscrible(
                 basic_id,
                 intype,
                 fenmian,
@@ -42,7 +42,7 @@
                 chanchijilu,
                 AD
                 ,el_id
-        from ElseDiscrible
+        from elseDiscrible
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -81,7 +81,7 @@
     </select>
 
 <update id="updateElseDiscrible" parameterType="com.njupt.po.ElseDiscrible">
-        UPDATE ElseDiscrible
+        UPDATE elseDiscrible
         <trim prefix="set" suffix="where el_id = #{el_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -117,7 +117,7 @@
     </update>
 
  <delete id="deleteElseDiscrible" parameterType="com.njupt.po.ElseDiscrible">
-        delete from ElseDiscrible WHERE el_id = #{el_id}
+        delete from elseDiscrible WHERE el_id = #{el_id}
     </delete>
 
  </mapper>

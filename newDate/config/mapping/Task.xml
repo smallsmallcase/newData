@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.Task">
     <insert id="saveTask" useGeneratedKeys="true" keyProperty="task_id" parameterType="com.njupt.po.Task">
-        insert into Task(
+        insert into task(
                 user_id,
                 basic_id,
                 page_num,
@@ -24,7 +24,7 @@
                 page_num,
                 finish
                 ,task_id
-        from Task
+        from task
         <trim prefix="where" prefixOverrides="and">
             <if test="user_id != null">
                 and user_id = #{user_id}
@@ -45,7 +45,7 @@
     </select>
 
 <update id="updateTask" parameterType="com.njupt.po.Task">
-        UPDATE Task
+        UPDATE task
         <trim prefix="set" suffix="where task_id = #{task_id}"  prefixOverrides=",">
             <if test="user_id != null">
                 , user_id = #{user_id}
@@ -63,7 +63,7 @@
     </update>
 
  <delete id="deleteTask" parameterType="com.njupt.po.Task">
-        delete from Task WHERE task_id = #{task_id}
+        delete from task WHERE task_id = #{task_id}
     </delete>
 
 <select id="queryByPage" parameterType="map" resultType="com.njupt.po.Task">
@@ -72,7 +72,7 @@
     page_num,
     finish
     ,task_id
-    from Task
+    from task
     <trim prefix="where" prefixOverrides="and">
         <if test="user_id != null">
             and user_id = #{user_id}
@@ -95,7 +95,7 @@
 
     <select id="queryTotal" parameterType="com.njupt.po.Task" resultType="int">
         SELECT count(task_id)
-        from Task
+        from task
         <trim prefix="where" prefixOverrides="and">
             <if test="user_id != null">
                 and user_id = #{user_id}
@@ -116,7 +116,7 @@
     </select>
 
     <select id="queryTotalForUser" resultType="map">
-        SELECT user_id,count(user_id) from Task where finish = 1 GROUP BY user_id;
+        SELECT user_id,count(user_id) from task where finish = 1 GROUP BY user_id;
     </select>
 
  </mapper>

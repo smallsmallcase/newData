@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.SlidTime">
     <insert id="saveSlidTime" useGeneratedKeys="true" keyProperty="st_id" parameterType="com.njupt.po.SlidTime">
-        insert into SlidTime(
+        insert into slidTime(
                 basic_id,
                 s_time,
                 lxmy_time,
@@ -33,7 +33,7 @@
                 lxm_time,
                 hdd
                 ,st_id
-        from SlidTime
+        from slidTime
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -63,7 +63,7 @@
     </select>
 
 <update id="updateSlidTime" parameterType="com.njupt.po.SlidTime">
-        UPDATE SlidTime
+        UPDATE slidTime
         <trim prefix="set" suffix="where st_id = #{st_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -90,7 +90,7 @@
     </update>
 
  <delete id="deleteSlidTime" parameterType="com.njupt.po.SlidTime">
-        delete from SlidTime WHERE st_id = #{st_id}
+        delete from slidTime WHERE st_id = #{st_id}
     </delete>
 
  </mapper>

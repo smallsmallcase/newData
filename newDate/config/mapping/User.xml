@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.User">
     <insert id="saveUser" useGeneratedKeys="true" keyProperty="user_id" parameterType="com.njupt.po.User">
-        insert into User(
+        insert into ser(
                 user_name,
                 password
                         
@@ -18,7 +18,7 @@
         SELECT user_name,
                 password
                 ,user_id
-        from User
+        from user
         <trim prefix="where" prefixOverrides="and">
             <if test="user_name != null">
                 and user_name = #{user_name}
@@ -33,7 +33,7 @@
     </select>
 
 <update id="updateUser" parameterType="com.njupt.po.User">
-        UPDATE User
+        UPDATE user
         <trim prefix="set" suffix="where user_id = #{user_id}"  prefixOverrides=",">
             <if test="user_name != null">
                 , user_name = #{user_name}
@@ -45,14 +45,14 @@
     </update>
 
  <delete id="deleteUser" parameterType="com.njupt.po.User">
-        delete from User WHERE user_id = #{user_id}
+        delete from user WHERE user_id = #{user_id}
     </delete>
 
 
     <select id="queryByIds" resultType="com.njupt.po.User">
         SELECT user_name
         ,user_id
-        from User where user_id in
+        from user where user_id in
         <foreach collection="list" item="id" open="(" close=")"
                  separator=",">
             #{id}

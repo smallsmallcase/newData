@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.Else_Check">
     <insert id="saveElse_Check" useGeneratedKeys="true" keyProperty="bs_id" parameterType="com.njupt.po.Else_Check">
-        insert into Else_Check(
+        insert into else_Check(
                 basic_id,
                 e_time,
                 b_chao
@@ -21,7 +21,7 @@
                 e_time,
                 b_chao
                 ,bs_id
-        from Else_Check
+        from else_Check
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -39,7 +39,7 @@
     </select>
 
 <update id="updateElse_Check" parameterType="com.njupt.po.Else_Check">
-        UPDATE Else_Check
+        UPDATE else_Check
         <trim prefix="set" suffix="where bs_id = #{bs_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -54,7 +54,7 @@
     </update>
 
  <delete id="deleteElse_Check" parameterType="com.njupt.po.Else_Check">
-        delete from Else_Check WHERE bs_id = #{bs_id}
+        delete from else_Check WHERE bs_id = #{bs_id}
     </delete>
 
  </mapper>

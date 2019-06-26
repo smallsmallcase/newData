@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.MarryHistory">
     <insert id="saveMarryHistory" useGeneratedKeys="true" keyProperty="marry_id" parameterType="com.njupt.po.MarryHistory">
-        insert into MarryHistory(
+        insert into marryHistory(
                 basic_id,
                 is_marry,
                 marryage,
@@ -39,7 +39,7 @@
                 husband_education,
                 husbandhealthy
                 ,marry_id
-        from MarryHistory
+        from marryHistory
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -75,7 +75,7 @@
     </select>
 
 <update id="updateMarryHistory" parameterType="com.njupt.po.MarryHistory">
-        UPDATE MarryHistory
+        UPDATE marryHistory
         <trim prefix="set" suffix="where marry_id = #{marry_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                ,basic_id = #{basic_id}
@@ -108,7 +108,7 @@
     </update>
 
  <delete id="deleteMarryHistory" parameterType="com.njupt.po.MarryHistory">
-        delete from MarryHistory WHERE marry_id = #{marry_id}
+        delete from marryHistory WHERE marry_id = #{marry_id}
     </delete>
 
  </mapper>

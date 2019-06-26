@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.Others">
     <insert id="saveOthers" useGeneratedKeys="true" keyProperty="o_id" parameterType="com.njupt.po.Others">
-        insert into Others(
+        insert into others(
                 basic_id,
                 fu_tong,
                 fu_jxtime,
@@ -45,7 +45,7 @@
                 zhui_zhang,
                 o_time
                 ,o_id
-        from Others
+        from others
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -87,7 +87,7 @@
     </select>
 
 <update id="updateOthers" parameterType="com.njupt.po.Others">
-        UPDATE Others
+        UPDATE others
         <trim prefix="set" suffix="where o_id = #{o_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -126,7 +126,7 @@
     </update>
 
  <delete id="deleteOthers" parameterType="com.njupt.po.Others">
-        delete from Others WHERE o_id = #{o_id}
+        delete from others WHERE o_id = #{o_id}
     </delete>
 
  </mapper>

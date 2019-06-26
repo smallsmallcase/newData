@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.RoutIneurineTest">
     <insert id="saveRoutIneurineTest" useGeneratedKeys="true" keyProperty="rt_id" parameterType="com.njupt.po.RoutIneurineTest">
-        insert into RoutIneurineTest(
+        insert into routIneurineTest(
                 basic_id,
                 uro,
                 bil,
@@ -102,7 +102,7 @@
                 crystal,
                 r_time
                 ,rt_id
-        from RoutIneurineTest
+        from routIneurineTest
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -201,7 +201,7 @@
     </select>
 
 <update id="updateRoutIneurineTest" parameterType="com.njupt.po.RoutIneurineTest">
-        UPDATE RoutIneurineTest
+        UPDATE routIneurineTest
         <trim prefix="set" suffix="where rt_id = #{rt_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -297,7 +297,7 @@
     </update>
 
  <delete id="deleteRoutIneurineTest" parameterType="com.njupt.po.RoutIneurineTest">
-        delete from RoutIneurineTest WHERE rt_id = #{rt_id}
+        delete from routIneurineTest WHERE rt_id = #{rt_id}
     </delete>
 
  </mapper>

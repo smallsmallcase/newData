@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.VisusEightCheck">
     <insert id="saveVisusEightCheck" useGeneratedKeys="true" keyProperty="vec_id" parameterType="com.njupt.po.VisusEightCheck">
-        insert into VisusEightCheck(
+        insert into visusEightCheck(
                 basic_id,
                 iu,
                 miu,
@@ -42,7 +42,7 @@
                 meidu,
                 v_time
                 ,vec_id
-        from VisusEightCheck
+        from visusEightCheck
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -81,7 +81,7 @@
     </select>
 
 <update id="updateVisusEightCheck" parameterType="com.njupt.po.VisusEightCheck">
-        UPDATE VisusEightCheck
+        UPDATE visusEightCheck
         <trim prefix="set" suffix="where vec_id = #{vec_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -117,7 +117,7 @@
     </update>
 
  <delete id="deleteVisusEightCheck" parameterType="com.njupt.po.VisusEightCheck">
-        delete from VisusEightCheck WHERE vec_id = #{vec_id}
+        delete from visusEightCheck WHERE vec_id = #{vec_id}
     </delete>
 
  </mapper>

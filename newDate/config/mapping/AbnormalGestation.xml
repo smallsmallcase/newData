@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.AbnormalGestation">
     <insert id="saveAbnormalGestation" useGeneratedKeys="true" keyProperty="a_id" parameterType="com.njupt.po.AbnormalGestation">
-        insert into AbnormalGestation(
+        insert into abnormalGestation(
                 basic_id,
                 early_num,
                 rengong_num,
@@ -42,7 +42,7 @@
                 fengmian,
                 elsething
                 ,a_id
-        from AbnormalGestation
+        from abnormalGestation
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -81,7 +81,7 @@
     </select>
 
 <update id="updateAbnormalGestation" parameterType="com.njupt.po.AbnormalGestation">
-        UPDATE AbnormalGestation
+        UPDATE abnormalGestation
         <trim prefix="set" suffix="where a_id = #{a_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -117,7 +117,7 @@
     </update>
 
  <delete id="deleteAbnormalGestation" parameterType="com.njupt.po.AbnormalGestation">
-        delete from AbnormalGestation WHERE a_id = #{a_id}
+        delete from abnormalGestation WHERE a_id = #{a_id}
     </delete>
 
  </mapper>

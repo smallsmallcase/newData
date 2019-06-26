@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.BasicInformation">
     <insert id="saveBasicInformation" useGeneratedKeys="true" keyProperty="basic_id" parameterType="com.njupt.po.BasicInformation">
-        insert into BasicInformation(
+        insert into basicInformation(
                 personname,
                 personsex,
                 personage,
@@ -51,7 +51,7 @@
                 personouttime,
                 ad_number
                 ,basic_id
-        from BasicInformation
+        from basicInformation
         <trim prefix="where" prefixOverrides="and">
             <if test="personname != null">
                 and personname = #{personname}
@@ -99,7 +99,7 @@
     </select>
 
 <update id="updateBasicInformation" parameterType="com.njupt.po.BasicInformation">
-        UPDATE BasicInformation
+        UPDATE basicInformation
         <trim prefix="set" suffix="where basic_id = #{basic_id}"  prefixOverrides=",">
             <if test="personname != null">
                 , personname = #{personname}
@@ -144,12 +144,12 @@
     </update>
 
  <delete id="deleteBasicInformation" parameterType="com.njupt.po.BasicInformation">
-        delete from BasicInformation WHERE basic_id = #{basic_id}
+        delete from basicInformation WHERE basic_id = #{basic_id}
     </delete>
 
 
     <select id="selectListByBasic_id" parameterType="list" resultType="com.njupt.po.BasicInformation">
-        SELECT personname,ad_number,basic_id from BasicInformation WHERE basic_id in
+        SELECT personname,ad_number,basic_id from basicInformation WHERE basic_id in
         <foreach collection="list" item="id" open="(" close=")"
                  separator=",">
             #{id}

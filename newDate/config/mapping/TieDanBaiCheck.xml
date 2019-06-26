@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.TieDanBaiCheck">
     <insert id="saveTieDanBaiCheck" useGeneratedKeys="true" keyProperty="tdbc_id" parameterType="com.njupt.po.TieDanBaiCheck">
-        insert into TieDanBaiCheck(
+        insert into tieDanBaiCheck(
                 basic_id,
                 ch_time,
                 ch
@@ -21,7 +21,7 @@
                 ch_time,
                 ch
                 ,tdbc_id
-        from TieDanBaiCheck
+        from tieDanBaiCheck
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -39,7 +39,7 @@
     </select>
 
 <update id="updateTieDanBaiCheck" parameterType="com.njupt.po.TieDanBaiCheck">
-        UPDATE TieDanBaiCheck
+        UPDATE tieDanBaiCheck
         <trim prefix="set" suffix="where tdbc_id = #{tdbc_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -54,7 +54,7 @@
     </update>
 
  <delete id="deleteTieDanBaiCheck" parameterType="com.njupt.po.TieDanBaiCheck">
-        delete from TieDanBaiCheck WHERE tdbc_id = #{tdbc_id}
+        delete from tieDanBaiCheck WHERE tdbc_id = #{tdbc_id}
     </delete>
 
  </mapper>

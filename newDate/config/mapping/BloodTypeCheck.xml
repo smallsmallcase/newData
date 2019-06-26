@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.BloodTypeCheck">
     <insert id="saveBloodTypeCheck" useGeneratedKeys="true" keyProperty="blo_id" parameterType="com.njupt.po.BloodTypeCheck">
-        insert into BloodTypeCheck(
+        insert into bloodTypeCheck(
                 basic_id,
                 abo,
                 rh
@@ -21,7 +21,7 @@
                 abo,
                 rh
                 ,blo_id
-        from BloodTypeCheck
+        from bloodTypeCheck
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -39,7 +39,7 @@
     </select>
 
 <update id="updateBloodTypeCheck" parameterType="com.njupt.po.BloodTypeCheck">
-        UPDATE BloodTypeCheck
+        UPDATE bloodTypeCheck
         <trim prefix="set" suffix="where blo_id = #{blo_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -54,7 +54,7 @@
     </update>
 
  <delete id="deleteBloodTypeCheck" parameterType="com.njupt.po.BloodTypeCheck">
-        delete from BloodTypeCheck WHERE blo_id = #{blo_id}
+        delete from bloodTypeCheck WHERE blo_id = #{blo_id}
     </delete>
 
  </mapper>

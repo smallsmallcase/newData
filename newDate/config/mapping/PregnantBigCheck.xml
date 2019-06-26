@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.PregnantBigCheck">
     <insert id="savePregnantBigCheck" useGeneratedKeys="true" keyProperty="pbg_id" parameterType="com.njupt.po.PregnantBigCheck">
-        insert into PregnantBigCheck(
+        insert into pregnantBigCheck(
                 basic_id,
                 k,
                 na,
@@ -96,7 +96,7 @@
                 cystain,
                 p_time
                 ,pbg_id
-        from PregnantBigCheck
+        from pregnantBigCheck
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -189,7 +189,7 @@
     </select>
 
 <update id="updatePregnantBigCheck" parameterType="com.njupt.po.PregnantBigCheck">
-        UPDATE PregnantBigCheck
+        UPDATE pregnantBigCheck
         <trim prefix="set" suffix="where pbg_id = #{pbg_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -279,7 +279,7 @@
     </update>
 
  <delete id="deletePregnantBigCheck" parameterType="com.njupt.po.PregnantBigCheck">
-        delete from PregnantBigCheck WHERE pbg_id = #{pbg_id}
+        delete from pregnantBigCheck WHERE pbg_id = #{pbg_id}
     </delete>
 
  </mapper>

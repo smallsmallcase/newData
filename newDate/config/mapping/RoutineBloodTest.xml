@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.RoutineBloodTest">
     <insert id="saveRoutineBloodTest" useGeneratedKeys="true" keyProperty="rbt_id" parameterType="com.njupt.po.RoutineBloodTest">
-        insert into RoutineBloodTest(
+        insert into routineBloodTest(
                 basic_id,
                 wbc_number,
                 rbc_number,
@@ -90,7 +90,7 @@
                 plcr,
                 r_time
                 ,rbt_id
-        from RoutineBloodTest
+        from routineBloodTest
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -177,7 +177,7 @@
     </select>
 
 <update id="updateRoutineBloodTest" parameterType="com.njupt.po.RoutineBloodTest">
-        UPDATE RoutineBloodTest
+        UPDATE routineBloodTest
         <trim prefix="set" suffix="where rbt_id = #{rbt_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -261,7 +261,7 @@
     </update>
 
  <delete id="deleteRoutineBloodTest" parameterType="com.njupt.po.RoutineBloodTest">
-        delete from RoutineBloodTest WHERE rbt_id = #{rbt_id}
+        delete from routineBloodTest WHERE rbt_id = #{rbt_id}
     </delete>
 
  </mapper>

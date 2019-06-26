@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.BodyChange">
     <insert id="saveBodyChange" useGeneratedKeys="true" keyProperty="bc_id" parameterType="com.njupt.po.BodyChange">
-        insert into BodyChange(
+        insert into bodyChange(
                 basic_id,
                 person_high,
                 before_weight,
@@ -27,7 +27,7 @@
                 after_weight,
                 shuizhong
                 ,bc_id
-        from BodyChange
+        from bodyChange
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -51,7 +51,7 @@
     </select>
 
 <update id="updateBodyChange" parameterType="com.njupt.po.BodyChange">
-        UPDATE BodyChange
+        UPDATE bodyChange
         <trim prefix="set" suffix="where bc_id = #{bc_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -72,7 +72,7 @@
     </update>
 
  <delete id="deleteBodyChange" parameterType="com.njupt.po.BodyChange">
-        delete from BodyChange WHERE bc_id = #{bc_id}
+        delete from bodyChange WHERE bc_id = #{bc_id}
     </delete>
 
  </mapper>

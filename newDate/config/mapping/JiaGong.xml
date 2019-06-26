@@ -4,7 +4,7 @@
 
 <mapper namespace="com.njupt.JiaGong">
     <insert id="saveJiaGong" useGeneratedKeys="true" keyProperty="jg_id" parameterType="com.njupt.po.JiaGong">
-        insert into JiaGong(
+        insert into jiaGong(
                 basic_id,
                 j_time,
                 t4,
@@ -33,7 +33,7 @@
                 yl_t3,
                 yl_t4
                 ,jg_id
-        from JiaGong
+        from jiaGong
         <trim prefix="where" prefixOverrides="and">
             <if test="basic_id != null">
                 and basic_id = #{basic_id}
@@ -63,7 +63,7 @@
     </select>
 
 <update id="updateJiaGong" parameterType="com.njupt.po.JiaGong">
-        UPDATE JiaGong
+        UPDATE jiaGong
         <trim prefix="set" suffix="where jg_id = #{jg_id}"  prefixOverrides=",">
             <if test="basic_id != null">
                 , basic_id = #{basic_id}
@@ -90,7 +90,7 @@
     </update>
 
  <delete id="deleteJiaGong" parameterType="com.njupt.po.JiaGong">
-        delete from JiaGong WHERE jg_id = #{jg_id}
+        delete from jiaGong WHERE jg_id = #{jg_id}
     </delete>
 
  </mapper>
